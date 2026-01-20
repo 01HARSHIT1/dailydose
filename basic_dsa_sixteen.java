@@ -173,26 +173,26 @@ public class basic_dsa_sixteen {
         
         // Test Case 2
         int n2 = 10;
-        long result2 = sumOfSquaresFormula(n2);
+        long result2_sq = sumOfSquaresFormula(n2);
         System.out.println("\nN = " + n2);
-        System.out.println("Sum of squares: " + result2);
+        System.out.println("Sum of squares: " + result2_sq);
         
         // Test Case 3
         int n3 = 1;
-        long result3 = sumOfSquaresFormula(n3);
+        long result3_sq = sumOfSquaresFormula(n3);
         System.out.println("\nN = " + n3);
-        System.out.println("Sum of squares: " + result3);
+        System.out.println("Sum of squares: " + result3_sq);
         
         // Test Case 4
         int n4 = 20;
-        long result4 = sumOfSquaresFormula(n4);
+        long result4_sq = sumOfSquaresFormula(n4);
         System.out.println("\nN = " + n4);
-        System.out.println("Sum of squares: " + result4);
+        System.out.println("Sum of squares: " + result4_sq);
         
         // Test Case 5 - Large number
         int n5 = 100;
-        long result5 = sumOfSquaresFormula(n5);
+        long result5_sq = sumOfSquaresFormula(n5);
         System.out.println("\nN = " + n5);
-        System.out.println("Sum of squares: " + result5);
+        System.out.println("Sum of squares: " + result5_sq);
     }
 }
