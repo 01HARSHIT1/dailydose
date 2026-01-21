@@ -226,17 +226,17 @@ public class basic_dsa_twenty_seven {
         System.out.println("Total Amount: ₹" + String.format("%.2f", amount2));
         
         // Test Case 3 - Quarterly compounding
-        double principal3 = 10000;
-        double rate3 = 8;
-        double time3 = 2;
-        int n3 = 4; // Quarterly
-        double[] result3 = calculateCompoundInterestCompoundedNTimes(principal3, rate3, time3, n3);
-        System.out.println("\nPrincipal: ₹" + principal3);
-        System.out.println("Rate: " + rate3 + "% per annum");
-        System.out.println("Time: " + time3 + " years");
-        System.out.println("Compounding: " + n3 + " times per year (Quarterly)");
-        System.out.println("Compound Interest: ₹" + String.format("%.2f", result3[0]));
-        System.out.println("Total Amount: ₹" + String.format("%.2f", result3[1]));
+        double principal3_ci = 10000;
+        double rate3_ci = 8;
+        double time3_ci = 2;
+        int n3_ci = 4; // Quarterly
+        double[] result3_ci = calculateCompoundInterestCompoundedNTimes(principal3_ci, rate3_ci, time3_ci, n3_ci);
+        System.out.println("\nPrincipal: ₹" + principal3_ci);
+        System.out.println("Rate: " + rate3_ci + "% per annum");
+        System.out.println("Time: " + time3_ci + " years");
+        System.out.println("Compounding: " + n3_ci + " times per year (Quarterly)");
+        System.out.println("Compound Interest: ₹" + String.format("%.2f", result3_ci[0]));
+        System.out.println("Total Amount: ₹" + String.format("%.2f", result3_ci[1]));
         
         // Test Case 4 - Calculate principal from amount
         double amount4 = 11025;
