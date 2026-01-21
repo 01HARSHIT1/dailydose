@@ -43,24 +43,17 @@ public class basic_dsa_twenty_four {
         }
         
         boolean hasZero = false;
-        int firstDigit = 0;
-        boolean isFirst = true;
         
         while (n > 0) {
             int digit = n % 10;
-            if (isFirst) {
-                firstDigit = digit;
-                isFirst = false;
-            }
             if (digit == 0) {
                 hasZero = true;
             }
             n /= 10;
         }
         
-        // Check if first digit is zero (but since we're processing from right, 
-        // we need to check the actual first digit in original number)
-        // For this, we check if the number has zero and the last processed digit wasn't zero
+        // For integers, they can't start with zero by definition
+        // So we just check if there's a zero somewhere
         return hasZero;
     }
     
