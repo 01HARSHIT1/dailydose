@@ -294,6 +294,21 @@ def find_first_repeating(nums):
     return -1  # No repeating element found
 
 
+# Problem 14: Find Missing Number
+# Given an array containing n distinct numbers taken from 0, 1, 2, ..., n,
+# find the one that is missing from the array
+def find_missing_number(nums):
+    """
+    Time Complexity: O(n)
+    Space Complexity: O(1)
+    """
+    n = len(nums)
+    expected_sum = n * (n + 1) // 2  # Sum of numbers from 0 to n
+    actual_sum = sum(nums)
+    
+    return expected_sum - actual_sum
+
+
 # Test cases
 if __name__ == "__main__":
     # Test Two Sum
@@ -351,3 +366,7 @@ if __name__ == "__main__":
     # Test Find First Repeating
     print("\nProblem 13 - Find First Repeating Element:")
     print(find_first_repeating([10, 5, 3, 4, 3, 5, 6]))  # Output: 5
+    
+    # Test Find Missing Number
+    print("\nProblem 14 - Find Missing Number:")
+    print(find_missing_number([3, 0, 1]))  # Output: 2

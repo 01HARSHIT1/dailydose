@@ -355,6 +355,25 @@ int findFirstRepeating(int* nums, int numsSize) {
     return -1; // No repeating element found
 }
 
+// Problem 14: Find Missing Number
+// Given an array containing n distinct numbers taken from 0, 1, 2, ..., n,
+// find the one that is missing from the array
+/**
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+int findMissingNumber(int* nums, int numsSize) {
+    int n = numsSize;
+    int expectedSum = n * (n + 1) / 2; // Sum of numbers from 0 to n
+    int actualSum = 0;
+    
+    for (int i = 0; i < numsSize; i++) {
+        actualSum += nums[i];
+    }
+    
+    return expectedSum - actualSum;
+}
+
 // Helper function to print array
 void printArray(int* arr, int size) {
     printf("[");
@@ -440,6 +459,11 @@ int main() {
     printf("\nProblem 13 - Find First Repeating Element:\n");
     int nums12[] = {10, 5, 3, 4, 3, 5, 6};
     printf("%d\n", findFirstRepeating(nums12, 7)); // Output: 5
+    
+    // Test Find Missing Number
+    printf("\nProblem 14 - Find Missing Number:\n");
+    int nums13[] = {3, 0, 1};
+    printf("%d\n", findMissingNumber(nums13, 3)); // Output: 2
     
     return 0;
 }

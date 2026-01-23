@@ -344,6 +344,25 @@ public class array_problems {
         return -1; // No repeating element found
     }
     
+    // Problem 14: Find Missing Number
+    // Given an array containing n distinct numbers taken from 0, 1, 2, ..., n,
+    // find the one that is missing from the array
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int findMissingNumber(int[] nums) {
+        int n = nums.length;
+        int expectedSum = n * (n + 1) / 2; // Sum of numbers from 0 to n
+        int actualSum = 0;
+        
+        for (int num : nums) {
+            actualSum += num;
+        }
+        
+        return expectedSum - actualSum;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -413,5 +432,9 @@ public class array_problems {
         // Test Find First Repeating
         System.out.println("\nProblem 13 - Find First Repeating Element:");
         System.out.println(findFirstRepeating(new int[]{10, 5, 3, 4, 3, 5, 6})); // Output: 5
+        
+        // Test Find Missing Number
+        System.out.println("\nProblem 14 - Find Missing Number:");
+        System.out.println(findMissingNumber(new int[]{3, 0, 1})); // Output: 2
     }
 }
