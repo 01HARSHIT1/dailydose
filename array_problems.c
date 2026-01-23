@@ -337,6 +337,24 @@ void rotateArray(int* nums, int numsSize, int k) {
     reverse(nums, k, numsSize - 1);
 }
 
+// Problem 13: Find First Repeating Element
+// Find the first element that appears more than once in the array
+/**
+ * Time Complexity: O(n)
+ * Space Complexity: O(n)
+ */
+int findFirstRepeating(int* nums, int numsSize) {
+    // Using a simple approach: for each element, check if it appears again later
+    for (int i = 0; i < numsSize; i++) {
+        for (int j = i + 1; j < numsSize; j++) {
+            if (nums[i] == nums[j]) {
+                return nums[i];
+            }
+        }
+    }
+    return -1; // No repeating element found
+}
+
 // Helper function to print array
 void printArray(int* arr, int size) {
     printf("[");
@@ -417,6 +435,11 @@ int main() {
     int nums11[] = {1, 2, 3, 4, 5, 6, 7};
     rotateArray(nums11, 7, 3);
     printArray(nums11, 7); // Output: [5, 6, 7, 1, 2, 3, 4]
+    
+    // Test Find First Repeating
+    printf("\nProblem 13 - Find First Repeating Element:\n");
+    int nums12[] = {10, 5, 3, 4, 3, 5, 6};
+    printf("%d\n", findFirstRepeating(nums12, 7)); // Output: 5
     
     return 0;
 }

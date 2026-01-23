@@ -273,6 +273,27 @@ def rotate_array(nums, k):
     reverse(nums, k, n - 1)
 
 
+# Problem 13: Find First Repeating Element
+# Find the first element that appears more than once in the array
+def find_first_repeating(nums):
+    """
+    Time Complexity: O(n)
+    Space Complexity: O(n)
+    """
+    count_map = {}
+    
+    # Count frequency of each element
+    for num in nums:
+        count_map[num] = count_map.get(num, 0) + 1
+    
+    # Find first element with count > 1
+    for num in nums:
+        if count_map[num] > 1:
+            return num
+    
+    return -1  # No repeating element found
+
+
 # Test cases
 if __name__ == "__main__":
     # Test Two Sum
@@ -326,3 +347,7 @@ if __name__ == "__main__":
     nums = [1, 2, 3, 4, 5, 6, 7]
     rotate_array(nums, 3)
     print(nums)  # Output: [5, 6, 7, 1, 2, 3, 4]
+    
+    # Test Find First Repeating
+    print("\nProblem 13 - Find First Repeating Element:")
+    print(find_first_repeating([10, 5, 3, 4, 3, 5, 6]))  # Output: 5

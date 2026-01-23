@@ -320,6 +320,30 @@ public class array_problems {
         }
     }
     
+    // Problem 13: Find First Repeating Element
+    // Given an array of integers, find the first element that appears more than once
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(n)
+     */
+    public static int findFirstRepeating(int[] nums) {
+        Map<Integer, Integer> countMap = new HashMap<>();
+        
+        // Count occurrences of each element
+        for (int num : nums) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+        
+        // Find first element with count > 1
+        for (int num : nums) {
+            if (countMap.get(num) > 1) {
+                return num;
+            }
+        }
+        
+        return -1; // No repeating element found
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -385,5 +409,9 @@ public class array_problems {
         int[] nums = {1, 2, 3, 4, 5, 6, 7};
         rotateArray(nums, 3);
         printArray(nums); // Output: [5, 6, 7, 1, 2, 3, 4]
+        
+        // Test Find First Repeating
+        System.out.println("\nProblem 13 - Find First Repeating Element:");
+        System.out.println(findFirstRepeating(new int[]{10, 5, 3, 4, 3, 5, 6})); // Output: 5
     }
 }
