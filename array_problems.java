@@ -494,6 +494,26 @@ public class array_problems {
         return true;
     }
     
+    // Problem 22: Find Minimum Element
+    // Given an array, find the minimum element
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int findMinElement(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("Array must not be empty");
+        }
+        
+        int minimum = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] < minimum) {
+                minimum = nums[i];
+            }
+        }
+        return minimum;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -595,5 +615,9 @@ public class array_problems {
         // Test Check if Array is Sorted
         System.out.println("\nProblem 21 - Check if Array is Sorted:");
         System.out.println(isSorted(new int[]{1, 2, 2, 3, 5})); // Output: true
+        
+        // Test Find Minimum Element
+        System.out.println("\nProblem 22 - Find Minimum Element:");
+        System.out.println(findMinElement(new int[]{3, 1, 7, 0, 5})); // Output: 0
     }
 }

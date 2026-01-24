@@ -506,6 +506,27 @@ int isSortedArray(int* nums, int numsSize) {
     return 1;
 }
 
+// Problem 22: Find Minimum Element
+// Given an array, find the minimum element
+/**
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+int findMinElement(int* nums, int numsSize) {
+    if (numsSize <= 0) {
+        // For simplicity, return INT_MAX for empty array; in practice, handle error separately
+        return INT_MAX;
+    }
+    
+    int minimum = nums[0];
+    for (int i = 1; i < numsSize; i++) {
+        if (nums[i] < minimum) {
+            minimum = nums[i];
+        }
+    }
+    return minimum;
+}
+
 // Helper function to print array
 void printArray(int* arr, int size) {
     printf("[");
@@ -631,6 +652,11 @@ int main() {
     printf("\nProblem 21 - Check if Array is Sorted:\n");
     int nums20[] = {1, 2, 2, 3, 5};
     printf("%s\n", isSortedArray(nums20, 5) ? "true" : "false"); // Output: true
+    
+    // Test Find Minimum Element
+    printf("\nProblem 22 - Find Minimum Element:\n");
+    int nums21[] = {3, 1, 7, 0, 5};
+    printf("%d\n", findMinElement(nums21, 5)); // Output: 0
     
     return 0;
 }

@@ -422,6 +422,23 @@ def is_sorted(nums):
     return True
 
 
+# Problem 22: Find Minimum Element
+# Given an array, find the minimum element
+def find_min_element(nums):
+    """
+    Time Complexity: O(n)
+    Space Complexity: O(1)
+    """
+    if not nums:
+        raise ValueError("Array must not be empty")
+    
+    minimum = nums[0]
+    for num in nums[1:]:
+        if num < minimum:
+            minimum = num
+    return minimum
+
+
 # Test cases
 if __name__ == "__main__":
     # Test Two Sum
@@ -511,3 +528,7 @@ if __name__ == "__main__":
     # Test Check if Array is Sorted
     print("\nProblem 21 - Check if Array is Sorted:")
     print(is_sorted([1, 2, 2, 3, 5]))  # Output: True
+    
+    # Test Find Minimum Element
+    print("\nProblem 22 - Find Minimum Element:")
+    print(find_min_element([3, 1, 7, 0, 5]))  # Output: 0
