@@ -403,6 +403,22 @@ public class array_problems {
         return candidate;
     }
     
+    // Problem 17: Count Occurrences of an Element
+    // Given an array and a target value, count how many times the target appears in the array
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int countOccurrences(int[] nums, int target) {
+        int count = 0;
+        for (int num : nums) {
+            if (num == target) {
+                count++;
+            }
+        }
+        return count;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -484,5 +500,9 @@ public class array_problems {
         // Test Majority Element
         System.out.println("\nProblem 16 - Majority Element:");
         System.out.println(majorityElement(new int[]{3, 2, 3})); // Output: 3
+        
+        // Test Count Occurrences
+        System.out.println("\nProblem 17 - Count Occurrences of Element:");
+        System.out.println(countOccurrences(new int[]{1, 2, 2, 3, 2, 4}, 2)); // Output: 3
     }
 }

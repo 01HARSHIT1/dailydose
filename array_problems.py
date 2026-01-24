@@ -346,6 +346,20 @@ def majority_element(nums):
     return candidate
 
 
+# Problem 17: Count Occurrences of an Element
+# Given an array and a target value, count how many times the target appears in the array
+def count_occurrences(nums, target):
+    """
+    Time Complexity: O(n)
+    Space Complexity: O(1)
+    """
+    count = 0
+    for num in nums:
+        if num == target:
+            count += 1
+    return count
+
+
 # Test cases
 if __name__ == "__main__":
     # Test Two Sum
@@ -415,3 +429,7 @@ if __name__ == "__main__":
     # Test Majority Element
     print("\nProblem 16 - Majority Element:")
     print(majority_element([3, 2, 3]))  # Output: 3
+    
+    # Test Count Occurrences
+    print("\nProblem 17 - Count Occurrences of Element:")
+    print(count_occurrences([1, 2, 2, 3, 2, 4], 2))  # Output: 3

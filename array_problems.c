@@ -414,6 +414,22 @@ int majorityElement(int* nums, int numsSize) {
     return candidate;
 }
 
+// Problem 17: Count Occurrences of an Element
+// Given an array and a target value, count how many times the target appears in the array
+/**
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+int countOccurrences(int* nums, int numsSize, int target) {
+    int count = 0;
+    for (int i = 0; i < numsSize; i++) {
+        if (nums[i] == target) {
+            count++;
+        }
+    }
+    return count;
+}
+
 // Helper function to print array
 void printArray(int* arr, int size) {
     printf("[");
@@ -514,6 +530,11 @@ int main() {
     printf("\nProblem 16 - Majority Element:\n");
     int nums15[] = {3, 2, 3};
     printf("%d\n", majorityElement(nums15, 3)); // Output: 3
+    
+    // Test Count Occurrences
+    printf("\nProblem 17 - Count Occurrences of Element:\n");
+    int nums16[] = {1, 2, 2, 3, 2, 4};
+    printf("%d\n", countOccurrences(nums16, 6, 2)); // Output: 3
     
     return 0;
 }
