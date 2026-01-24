@@ -654,6 +654,36 @@ public class array_problems {
         return secondLargest;
     }
     
+    // Problem 30: Find Second Smallest Element
+    // Given an array, find the second smallest element
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int findSecondSmallest(int[] nums) {
+        if (nums == null || nums.length < 2) {
+            throw new IllegalArgumentException("Array must have at least 2 elements");
+        }
+        
+        int smallest = Integer.MAX_VALUE;
+        int secondSmallest = Integer.MAX_VALUE;
+        
+        for (int num : nums) {
+            if (num < smallest) {
+                secondSmallest = smallest;
+                smallest = num;
+            } else if (num < secondSmallest && num != smallest) {
+                secondSmallest = num;
+            }
+        }
+        
+        if (secondSmallest == Integer.MAX_VALUE) {
+            throw new IllegalArgumentException("No second smallest element found");
+        }
+        
+        return secondSmallest;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -789,5 +819,9 @@ public class array_problems {
         // Test Find Second Largest Element
         System.out.println("\nProblem 29 - Find Second Largest Element:");
         System.out.println(findSecondLargest(new int[]{3, 1, 7, 0, 5})); // Output: 5
+        
+        // Test Find Second Smallest Element
+        System.out.println("\nProblem 30 - Find Second Smallest Element:");
+        System.out.println(findSecondSmallest(new int[]{3, 1, 7, 0, 5})); // Output: 1
     }
 }
