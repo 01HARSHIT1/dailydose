@@ -708,6 +708,34 @@ public class array_problems {
         return writeIndex; // Return new length
     }
     
+    // Problem 32: Move Zeros to End
+    // Given an array, move all zeros to the end while maintaining the relative order of non-zero elements
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static void moveZerosToEnd(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return;
+        }
+        
+        int writeIndex = 0; // Position to write next non-zero element
+        
+        // Move all non-zero elements to the front
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                nums[writeIndex] = nums[i];
+                writeIndex++;
+            }
+        }
+        
+        // Fill remaining positions with zeros
+        while (writeIndex < nums.length) {
+            nums[writeIndex] = 0;
+            writeIndex++;
+        }
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -855,5 +883,11 @@ public class array_problems {
         System.out.println("New length: " + newLength); // Output: 5
         System.out.print("Array after removal: ");
         printArray(nums31); // Output: [1, 2, 3, 4, 5, ...]
+        
+        // Test Move Zeros to End
+        System.out.println("\nProblem 32 - Move Zeros to End:");
+        int[] nums32 = {0, 1, 0, 3, 12};
+        moveZerosToEnd(nums32);
+        printArray(nums32); // Output: [1, 3, 12, 0, 0]
     }
 }
