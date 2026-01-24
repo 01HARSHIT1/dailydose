@@ -605,6 +605,25 @@ public class array_problems {
         return count;
     }
     
+    // Problem 28: Find Average of Array Elements
+    // Given an array, find the average of all elements
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static double findAverage(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("Array must not be empty");
+        }
+        
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        
+        return (double) sum / nums.length;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -732,5 +751,9 @@ public class array_problems {
         // Test Count Odd Numbers in Array
         System.out.println("\nProblem 27 - Count Odd Numbers in Array:");
         System.out.println(countOdds(new int[]{1, 2, 3, 4, 5})); // Output: 3
+        
+        // Test Find Average of Array Elements
+        System.out.println("\nProblem 28 - Find Average of Array Elements:");
+        System.out.println(findAverage(new int[]{1, 2, 3, 4, 5})); // Output: 3.0
     }
 }
