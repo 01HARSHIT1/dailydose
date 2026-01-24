@@ -624,6 +624,36 @@ public class array_problems {
         return (double) sum / nums.length;
     }
     
+    // Problem 29: Find Second Largest Element
+    // Given an array, find the second largest element
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int findSecondLargest(int[] nums) {
+        if (nums == null || nums.length < 2) {
+            throw new IllegalArgumentException("Array must have at least 2 elements");
+        }
+        
+        int largest = Integer.MIN_VALUE;
+        int secondLargest = Integer.MIN_VALUE;
+        
+        for (int num : nums) {
+            if (num > largest) {
+                secondLargest = largest;
+                largest = num;
+            } else if (num > secondLargest && num != largest) {
+                secondLargest = num;
+            }
+        }
+        
+        if (secondLargest == Integer.MIN_VALUE) {
+            throw new IllegalArgumentException("No second largest element found");
+        }
+        
+        return secondLargest;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -755,5 +785,9 @@ public class array_problems {
         // Test Find Average of Array Elements
         System.out.println("\nProblem 28 - Find Average of Array Elements:");
         System.out.println(findAverage(new int[]{1, 2, 3, 4, 5})); // Output: 3.0
+        
+        // Test Find Second Largest Element
+        System.out.println("\nProblem 29 - Find Second Largest Element:");
+        System.out.println(findSecondLargest(new int[]{3, 1, 7, 0, 5})); // Output: 5
     }
 }
