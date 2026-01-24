@@ -736,6 +736,35 @@ public class array_problems {
         }
     }
     
+    // Problem 33: Find All Duplicates in Array
+    // Given an array of integers, find all elements that appear twice
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(n)
+     */
+    public static java.util.List<Integer> findAllDuplicates(int[] nums) {
+        java.util.List<Integer> duplicates = new java.util.ArrayList<>();
+        if (nums == null || nums.length == 0) {
+            return duplicates;
+        }
+        
+        java.util.Map<Integer, Integer> frequency = new java.util.HashMap<>();
+        
+        // Count frequency of each element
+        for (int num : nums) {
+            frequency.put(num, frequency.getOrDefault(num, 0) + 1);
+        }
+        
+        // Find all elements that appear twice
+        for (java.util.Map.Entry<Integer, Integer> entry : frequency.entrySet()) {
+            if (entry.getValue() == 2) {
+                duplicates.add(entry.getKey());
+            }
+        }
+        
+        return duplicates;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -889,5 +918,9 @@ public class array_problems {
         int[] nums32 = {0, 1, 0, 3, 12};
         moveZerosToEnd(nums32);
         printArray(nums32); // Output: [1, 3, 12, 0, 0]
+        
+        // Test Find All Duplicates in Array
+        System.out.println("\nProblem 33 - Find All Duplicates in Array:");
+        System.out.println(findAllDuplicates(new int[]{4, 3, 2, 7, 8, 2, 3, 1})); // Output: [2, 3]
     }
 }
