@@ -479,6 +479,21 @@ public class array_problems {
         return maximum;
     }
     
+    // Problem 21: Check if Array is Sorted (Non-decreasing)
+    // Given an array, check if it is sorted in non-decreasing order
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static boolean isSorted(int[] nums) {
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] < nums[i - 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -576,5 +591,9 @@ public class array_problems {
         // Test Find Maximum Element
         System.out.println("\nProblem 20 - Find Maximum Element:");
         System.out.println(findMax(new int[]{3, 1, 7, 0, 5})); // Output: 7
+        
+        // Test Check if Array is Sorted
+        System.out.println("\nProblem 21 - Check if Array is Sorted:");
+        System.out.println(isSorted(new int[]{1, 2, 2, 3, 5})); // Output: true
     }
 }

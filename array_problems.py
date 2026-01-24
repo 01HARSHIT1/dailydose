@@ -409,6 +409,19 @@ def find_max(nums):
     return maximum
 
 
+# Problem 21: Check if Array is Sorted (Non-decreasing)
+# Given an array, check if it is sorted in non-decreasing order
+def is_sorted(nums):
+    """
+    Time Complexity: O(n)
+    Space Complexity: O(1)
+    """
+    for i in range(1, len(nums)):
+        if nums[i] < nums[i - 1]:
+            return False
+    return True
+
+
 # Test cases
 if __name__ == "__main__":
     # Test Two Sum
@@ -494,3 +507,7 @@ if __name__ == "__main__":
     # Test Find Maximum Element
     print("\nProblem 20 - Find Maximum Element:")
     print(find_max([3, 1, 7, 0, 5]))  # Output: 7
+    
+    # Test Check if Array is Sorted
+    print("\nProblem 21 - Check if Array is Sorted:")
+    print(is_sorted([1, 2, 2, 3, 5]))  # Output: True

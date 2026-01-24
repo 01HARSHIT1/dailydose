@@ -491,6 +491,21 @@ int findMax(int* nums, int numsSize) {
     return maximum;
 }
 
+// Problem 21: Check if Array is Sorted (Non-decreasing)
+// Given an array, check if it is sorted in non-decreasing order
+/**
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+int isSortedArray(int* nums, int numsSize) {
+    for (int i = 1; i < numsSize; i++) {
+        if (nums[i] < nums[i - 1]) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
 // Helper function to print array
 void printArray(int* arr, int size) {
     printf("[");
@@ -611,6 +626,11 @@ int main() {
     printf("\nProblem 20 - Find Maximum Element:\n");
     int nums19[] = {3, 1, 7, 0, 5};
     printf("%d\n", findMax(nums19, 5)); // Output: 7
+    
+    // Test Check if Array is Sorted
+    printf("\nProblem 21 - Check if Array is Sorted:\n");
+    int nums20[] = {1, 2, 2, 3, 5};
+    printf("%s\n", isSortedArray(nums20, 5) ? "true" : "false"); // Output: true
     
     return 0;
 }
