@@ -389,6 +389,31 @@ int singleNumber(int* nums, int numsSize) {
     return result;
 }
 
+// Problem 16: Majority Element
+// Given an array of size n, find the element that appears more than n/2 times
+/**
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ * Uses Boyer-Moore Voting Algorithm
+ */
+int majorityElement(int* nums, int numsSize) {
+    int candidate = 0;
+    int count = 0;
+    
+    for (int i = 0; i < numsSize; i++) {
+        if (count == 0) {
+            candidate = nums[i];
+            count = 1;
+        } else if (nums[i] == candidate) {
+            count++;
+        } else {
+            count--;
+        }
+    }
+    
+    return candidate;
+}
+
 // Helper function to print array
 void printArray(int* arr, int size) {
     printf("[");
@@ -484,6 +509,11 @@ int main() {
     printf("\nProblem 15 - Single Number:\n");
     int nums14[] = {4, 1, 2, 1, 2};
     printf("%d\n", singleNumber(nums14, 5)); // Output: 4
+    
+    // Test Majority Element
+    printf("\nProblem 16 - Majority Element:\n");
+    int nums15[] = {3, 2, 3};
+    printf("%d\n", majorityElement(nums15, 3)); // Output: 3
     
     return 0;
 }

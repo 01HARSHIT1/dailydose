@@ -378,6 +378,31 @@ public class array_problems {
         return result;
     }
     
+    // Problem 16: Majority Element
+    // Given an array of size n, find the element that appears more than n/2 times
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     * Uses Boyer-Moore Voting Algorithm
+     */
+    public static int majorityElement(int[] nums) {
+        int candidate = 0;
+        int count = 0;
+        
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
+                count = 1;
+            } else if (num == candidate) {
+                count++;
+            } else {
+                count--;
+            }
+        }
+        
+        return candidate;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -455,5 +480,9 @@ public class array_problems {
         // Test Single Number
         System.out.println("\nProblem 15 - Single Number:");
         System.out.println(singleNumber(new int[]{4, 1, 2, 1, 2})); // Output: 4
+        
+        // Test Majority Element
+        System.out.println("\nProblem 16 - Majority Element:");
+        System.out.println(majorityElement(new int[]{3, 2, 3})); // Output: 3
     }
 }

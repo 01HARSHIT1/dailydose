@@ -323,6 +323,29 @@ def single_number(nums):
     return result
 
 
+# Problem 16: Majority Element
+# Given an array of size n, find the element that appears more than n/2 times
+def majority_element(nums):
+    """
+    Time Complexity: O(n)
+    Space Complexity: O(1)
+    Uses Boyer-Moore Voting Algorithm
+    """
+    candidate = None
+    count = 0
+    
+    for num in nums:
+        if count == 0:
+            candidate = num
+            count = 1
+        elif num == candidate:
+            count += 1
+        else:
+            count -= 1
+    
+    return candidate
+
+
 # Test cases
 if __name__ == "__main__":
     # Test Two Sum
@@ -388,3 +411,7 @@ if __name__ == "__main__":
     # Test Single Number
     print("\nProblem 15 - Single Number:")
     print(single_number([4, 1, 2, 1, 2]))  # Output: 4
+    
+    # Test Majority Element
+    print("\nProblem 16 - Majority Element:")
+    print(majority_element([3, 2, 3]))  # Output: 3
