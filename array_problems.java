@@ -589,6 +589,22 @@ public class array_problems {
         return maximum - minimum;
     }
     
+    // Problem 27: Count Odd Numbers in Array
+    // Given an array, count how many numbers are odd
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int countOdds(int[] nums) {
+        int count = 0;
+        for (int num : nums) {
+            if (num % 2 != 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -712,5 +728,9 @@ public class array_problems {
         // Test Range of Array (Max - Min)
         System.out.println("\nProblem 26 - Range of Array (Max - Min):");
         System.out.println(arrayRange(new int[]{3, 1, 7, 0, 5})); // Output: 7
+        
+        // Test Count Odd Numbers in Array
+        System.out.println("\nProblem 27 - Count Odd Numbers in Array:");
+        System.out.println(countOdds(new int[]{1, 2, 3, 4, 5})); // Output: 3
     }
 }
