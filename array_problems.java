@@ -434,6 +434,31 @@ public class array_problems {
         return -1;
     }
     
+    // Problem 19: Binary Search (Any Occurrence)
+    // Given a sorted array and a target value, return the index of the target if found, otherwise -1
+    /**
+     * Time Complexity: O(log n)
+     * Space Complexity: O(1)
+     */
+    public static int binarySearch(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+        
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        
+        return -1;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -523,5 +548,9 @@ public class array_problems {
         // Test Linear Search
         System.out.println("\nProblem 18 - Linear Search:");
         System.out.println(linearSearch(new int[]{4, 2, 7, 1, 9}, 7)); // Output: 2
+        
+        // Test Binary Search
+        System.out.println("\nProblem 19 - Binary Search (Any Occurrence):");
+        System.out.println(binarySearch(new int[]{1, 2, 3, 4, 5, 6}, 4)); // Output: 3
     }
 }

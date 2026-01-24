@@ -445,6 +445,31 @@ int linearSearch(int* nums, int numsSize, int target) {
     return -1;
 }
 
+// Problem 19: Binary Search (Any Occurrence)
+// Given a sorted array and a target value, return the index of the target if found, otherwise -1
+/**
+ * Time Complexity: O(log n)
+ * Space Complexity: O(1)
+ */
+int binarySearch(int* nums, int numsSize, int target) {
+    int left = 0;
+    int right = numsSize - 1;
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        
+        if (nums[mid] == target) {
+            return mid;
+        } else if (nums[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    
+    return -1;
+}
+
 // Helper function to print array
 void printArray(int* arr, int size) {
     printf("[");
@@ -555,6 +580,11 @@ int main() {
     printf("\nProblem 18 - Linear Search:\n");
     int nums17[] = {4, 2, 7, 1, 9};
     printf("%d\n", linearSearch(nums17, 5, 7)); // Output: 2
+    
+    // Test Binary Search
+    printf("\nProblem 19 - Binary Search (Any Occurrence):\n");
+    int nums18[] = {1, 2, 3, 4, 5, 6};
+    printf("%d\n", binarySearch(nums18, 6, 4)); // Output: 3
     
     return 0;
 }

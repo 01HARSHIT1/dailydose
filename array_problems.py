@@ -373,6 +373,25 @@ def linear_search(nums, target):
     return -1
 
 
+# Problem 19: Binary Search (Any Occurrence)
+# Given a sorted array and a target value, return the index of the target if found, otherwise -1
+def binary_search(nums, target):
+    """
+    Time Complexity: O(log n)
+    Space Complexity: O(1)
+    """
+    left, right = 0, len(nums) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+
 # Test cases
 if __name__ == "__main__":
     # Test Two Sum
@@ -450,3 +469,7 @@ if __name__ == "__main__":
     # Test Linear Search
     print("\nProblem 18 - Linear Search:")
     print(linear_search([4, 2, 7, 1, 9], 7))  # Output: 2
+    
+    # Test Binary Search
+    print("\nProblem 19 - Binary Search (Any Occurrence):")
+    print(binary_search([1, 2, 3, 4, 5, 6], 4))  # Output: 3
