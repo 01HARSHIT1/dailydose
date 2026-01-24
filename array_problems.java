@@ -684,6 +684,30 @@ public class array_problems {
         return secondSmallest;
     }
     
+    // Problem 31: Remove Duplicates from Sorted Array
+    // Given a sorted array, remove duplicates in-place and return the new length
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        
+        int writeIndex = 1; // Position to write next unique element
+        
+        for (int readIndex = 1; readIndex < nums.length; readIndex++) {
+            // If current element is different from previous, it's unique
+            if (nums[readIndex] != nums[readIndex - 1]) {
+                nums[writeIndex] = nums[readIndex];
+                writeIndex++;
+            }
+        }
+        
+        return writeIndex; // Return new length
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -823,5 +847,13 @@ public class array_problems {
         // Test Find Second Smallest Element
         System.out.println("\nProblem 30 - Find Second Smallest Element:");
         System.out.println(findSecondSmallest(new int[]{3, 1, 7, 0, 5})); // Output: 1
+        
+        // Test Remove Duplicates from Sorted Array
+        System.out.println("\nProblem 31 - Remove Duplicates from Sorted Array:");
+        int[] nums31 = {1, 1, 2, 2, 3, 4, 4, 5};
+        int newLength = removeDuplicates(nums31);
+        System.out.println("New length: " + newLength); // Output: 5
+        System.out.print("Array after removal: ");
+        printArray(nums31); // Output: [1, 2, 3, 4, 5, ...]
     }
 }
