@@ -374,6 +374,21 @@ int findMissingNumber(int* nums, int numsSize) {
     return expectedSum - actualSum;
 }
 
+// Problem 15: Single Number
+// Given a non-empty array of integers where every element appears twice except for one,
+// find the single one
+/**
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+int singleNumber(int* nums, int numsSize) {
+    int result = 0;
+    for (int i = 0; i < numsSize; i++) {
+        result ^= nums[i];
+    }
+    return result;
+}
+
 // Helper function to print array
 void printArray(int* arr, int size) {
     printf("[");
@@ -464,6 +479,11 @@ int main() {
     printf("\nProblem 14 - Find Missing Number:\n");
     int nums13[] = {3, 0, 1};
     printf("%d\n", findMissingNumber(nums13, 3)); // Output: 2
+    
+    // Test Single Number
+    printf("\nProblem 15 - Single Number:\n");
+    int nums14[] = {4, 1, 2, 1, 2};
+    printf("%d\n", singleNumber(nums14, 5)); // Output: 4
     
     return 0;
 }

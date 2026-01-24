@@ -309,6 +309,20 @@ def find_missing_number(nums):
     return expected_sum - actual_sum
 
 
+# Problem 15: Single Number
+# Given a non-empty array of integers where every element appears twice except for one,
+# find the single one
+def single_number(nums):
+    """
+    Time Complexity: O(n)
+    Space Complexity: O(1)
+    """
+    result = 0
+    for num in nums:
+        result ^= num
+    return result
+
+
 # Test cases
 if __name__ == "__main__":
     # Test Two Sum
@@ -370,3 +384,7 @@ if __name__ == "__main__":
     # Test Find Missing Number
     print("\nProblem 14 - Find Missing Number:")
     print(find_missing_number([3, 0, 1]))  # Output: 2
+    
+    # Test Single Number
+    print("\nProblem 15 - Single Number:")
+    print(single_number([4, 1, 2, 1, 2]))  # Output: 4

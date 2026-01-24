@@ -363,6 +363,21 @@ public class array_problems {
         return expectedSum - actualSum;
     }
     
+    // Problem 15: Single Number
+    // Given a non-empty array of integers where every element appears twice except for one,
+    // find the single one
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int singleNumber(int[] nums) {
+        int result = 0;
+        for (int num : nums) {
+            result ^= num;
+        }
+        return result;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -436,5 +451,9 @@ public class array_problems {
         // Test Find Missing Number
         System.out.println("\nProblem 14 - Find Missing Number:");
         System.out.println(findMissingNumber(new int[]{3, 0, 1})); // Output: 2
+        
+        // Test Single Number
+        System.out.println("\nProblem 15 - Single Number:");
+        System.out.println(singleNumber(new int[]{4, 1, 2, 1, 2})); // Output: 4
     }
 }
