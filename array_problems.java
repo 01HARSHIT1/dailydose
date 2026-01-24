@@ -563,6 +563,32 @@ public class array_problems {
         return count;
     }
     
+    // Problem 26: Range of Array (Max - Min)
+    // Given an array, find the difference between maximum and minimum elements
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int arrayRange(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("Array must not be empty");
+        }
+        
+        int minimum = nums[0];
+        int maximum = nums[0];
+        
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] < minimum) {
+                minimum = nums[i];
+            }
+            if (nums[i] > maximum) {
+                maximum = nums[i];
+            }
+        }
+        
+        return maximum - minimum;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -682,5 +708,9 @@ public class array_problems {
         // Test Count Even Numbers in Array
         System.out.println("\nProblem 25 - Count Even Numbers in Array:");
         System.out.println(countEvens(new int[]{1, 2, 3, 4, 6})); // Output: 3
+        
+        // Test Range of Array (Max - Min)
+        System.out.println("\nProblem 26 - Range of Array (Max - Min):");
+        System.out.println(arrayRange(new int[]{3, 1, 7, 0, 5})); // Output: 7
     }
 }
