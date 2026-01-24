@@ -392,6 +392,23 @@ def binary_search(nums, target):
     return -1
 
 
+# Problem 20: Find Maximum Element
+# Given an array, find the maximum element
+def find_max(nums):
+    """
+    Time Complexity: O(n)
+    Space Complexity: O(1)
+    """
+    if not nums:
+        raise ValueError("Array must not be empty")
+    
+    maximum = nums[0]
+    for num in nums[1:]:
+        if num > maximum:
+            maximum = num
+    return maximum
+
+
 # Test cases
 if __name__ == "__main__":
     # Test Two Sum
@@ -473,3 +490,7 @@ if __name__ == "__main__":
     # Test Binary Search
     print("\nProblem 19 - Binary Search (Any Occurrence):")
     print(binary_search([1, 2, 3, 4, 5, 6], 4))  # Output: 3
+    
+    # Test Find Maximum Element
+    print("\nProblem 20 - Find Maximum Element:")
+    print(find_max([3, 1, 7, 0, 5]))  # Output: 7

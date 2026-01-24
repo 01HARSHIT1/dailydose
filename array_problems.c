@@ -470,6 +470,27 @@ int binarySearch(int* nums, int numsSize, int target) {
     return -1;
 }
 
+// Problem 20: Find Maximum Element
+// Given an array, find the maximum element
+/**
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+int findMax(int* nums, int numsSize) {
+    if (numsSize <= 0) {
+        // For simplicity, return INT_MIN for empty array; in practice, handle error separately
+        return INT_MIN;
+    }
+    
+    int maximum = nums[0];
+    for (int i = 1; i < numsSize; i++) {
+        if (nums[i] > maximum) {
+            maximum = nums[i];
+        }
+    }
+    return maximum;
+}
+
 // Helper function to print array
 void printArray(int* arr, int size) {
     printf("[");
@@ -585,6 +606,11 @@ int main() {
     printf("\nProblem 19 - Binary Search (Any Occurrence):\n");
     int nums18[] = {1, 2, 3, 4, 5, 6};
     printf("%d\n", binarySearch(nums18, 6, 4)); // Output: 3
+    
+    // Test Find Maximum Element
+    printf("\nProblem 20 - Find Maximum Element:\n");
+    int nums19[] = {3, 1, 7, 0, 5};
+    printf("%d\n", findMax(nums19, 5)); // Output: 7
     
     return 0;
 }

@@ -459,6 +459,26 @@ public class array_problems {
         return -1;
     }
     
+    // Problem 20: Find Maximum Element
+    // Given an array, find the maximum element
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int findMax(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("Array must not be empty");
+        }
+        
+        int maximum = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > maximum) {
+                maximum = nums[i];
+            }
+        }
+        return maximum;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -552,5 +572,9 @@ public class array_problems {
         // Test Binary Search
         System.out.println("\nProblem 19 - Binary Search (Any Occurrence):");
         System.out.println(binarySearch(new int[]{1, 2, 3, 4, 5, 6}, 4)); // Output: 3
+        
+        // Test Find Maximum Element
+        System.out.println("\nProblem 20 - Find Maximum Element:");
+        System.out.println(findMax(new int[]{3, 1, 7, 0, 5})); // Output: 7
     }
 }
