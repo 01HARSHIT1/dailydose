@@ -547,6 +547,22 @@ public class array_problems {
         }
     }
     
+    // Problem 25: Count Even Numbers in Array
+    // Given an array, count how many numbers are even
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int countEvens(int[] nums) {
+        int count = 0;
+        for (int num : nums) {
+            if (num % 2 == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -662,5 +678,9 @@ public class array_problems {
         int[] nums24 = {1, 2, 3, 4, 5};
         reverseArray(nums24);
         printArray(nums24); // Output: [5, 4, 3, 2, 1]
+        
+        // Test Count Even Numbers in Array
+        System.out.println("\nProblem 25 - Count Even Numbers in Array:");
+        System.out.println(countEvens(new int[]{1, 2, 3, 4, 6})); // Output: 3
     }
 }

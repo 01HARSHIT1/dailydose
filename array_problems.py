@@ -452,6 +452,20 @@ def sum_array(nums):
     return total
 
 
+# Problem 25: Count Even Numbers in Array
+# Given an array, count how many numbers are even
+def count_evens(nums):
+    """
+    Time Complexity: O(n)
+    Space Complexity: O(1)
+    """
+    count = 0
+    for num in nums:
+        if num % 2 == 0:
+            count += 1
+    return count
+
+
 # Test cases
 if __name__ == "__main__":
     # Test Two Sum
@@ -549,3 +563,7 @@ if __name__ == "__main__":
     # Test Sum of Array Elements
     print("\nProblem 23 - Sum of Array Elements:")
     print(sum_array([1, 2, 3, 4, 5]))  # Output: 15
+    
+    # Test Count Even Numbers in Array
+    print("\nProblem 25 - Count Even Numbers in Array:")
+    print(count_evens([1, 2, 3, 4, 6]))  # Output: 3

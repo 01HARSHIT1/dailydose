@@ -541,6 +541,22 @@ int sumArray(int* nums, int numsSize) {
     return total;
 }
 
+// Problem 25: Count Even Numbers in Array
+// Given an array, count how many numbers are even
+/**
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+int countEvens(int* nums, int numsSize) {
+    int count = 0;
+    for (int i = 0; i < numsSize; i++) {
+        if (nums[i] % 2 == 0) {
+            count++;
+        }
+    }
+    return count;
+}
+
 // Helper function to print array
 void printArray(int* arr, int size) {
     printf("[");
@@ -676,6 +692,11 @@ int main() {
     printf("\nProblem 23 - Sum of Array Elements:\n");
     int nums22[] = {1, 2, 3, 4, 5};
     printf("%d\n", sumArray(nums22, 5)); // Output: 15
+    
+    // Test Count Even Numbers in Array
+    printf("\nProblem 25 - Count Even Numbers in Array:\n");
+    int nums23[] = {1, 2, 3, 4, 6};
+    printf("%d\n", countEvens(nums23, 5)); // Output: 3
     
     return 0;
 }
