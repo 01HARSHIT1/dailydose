@@ -430,6 +430,21 @@ int countOccurrences(int* nums, int numsSize, int target) {
     return count;
 }
 
+// Problem 18: Linear Search
+// Given an array and a target value, return the index of the target if found, otherwise -1
+/**
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+int linearSearch(int* nums, int numsSize, int target) {
+    for (int i = 0; i < numsSize; i++) {
+        if (nums[i] == target) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 // Helper function to print array
 void printArray(int* arr, int size) {
     printf("[");
@@ -535,6 +550,11 @@ int main() {
     printf("\nProblem 17 - Count Occurrences of Element:\n");
     int nums16[] = {1, 2, 2, 3, 2, 4};
     printf("%d\n", countOccurrences(nums16, 6, 2)); // Output: 3
+    
+    // Test Linear Search
+    printf("\nProblem 18 - Linear Search:\n");
+    int nums17[] = {4, 2, 7, 1, 9};
+    printf("%d\n", linearSearch(nums17, 5, 7)); // Output: 2
     
     return 0;
 }

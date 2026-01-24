@@ -360,6 +360,19 @@ def count_occurrences(nums, target):
     return count
 
 
+# Problem 18: Linear Search
+# Given an array and a target value, return the index of the target if found, otherwise -1
+def linear_search(nums, target):
+    """
+    Time Complexity: O(n)
+    Space Complexity: O(1)
+    """
+    for i, num in enumerate(nums):
+        if num == target:
+            return i
+    return -1
+
+
 # Test cases
 if __name__ == "__main__":
     # Test Two Sum
@@ -433,3 +446,7 @@ if __name__ == "__main__":
     # Test Count Occurrences
     print("\nProblem 17 - Count Occurrences of Element:")
     print(count_occurrences([1, 2, 2, 3, 2, 4], 2))  # Output: 3
+    
+    # Test Linear Search
+    print("\nProblem 18 - Linear Search:")
+    print(linear_search([4, 2, 7, 1, 9], 7))  # Output: 2

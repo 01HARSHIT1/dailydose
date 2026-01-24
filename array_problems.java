@@ -419,6 +419,21 @@ public class array_problems {
         return count;
     }
     
+    // Problem 18: Linear Search
+    // Given an array and a target value, return the index of the target if found, otherwise -1
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int linearSearch(int[] nums, int target) {
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == target) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -504,5 +519,9 @@ public class array_problems {
         // Test Count Occurrences
         System.out.println("\nProblem 17 - Count Occurrences of Element:");
         System.out.println(countOccurrences(new int[]{1, 2, 2, 3, 2, 4}, 2)); // Output: 3
+        
+        // Test Linear Search
+        System.out.println("\nProblem 18 - Linear Search:");
+        System.out.println(linearSearch(new int[]{4, 2, 7, 1, 9}, 7)); // Output: 2
     }
 }
