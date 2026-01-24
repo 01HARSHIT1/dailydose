@@ -439,6 +439,19 @@ def find_min_element(nums):
     return minimum
 
 
+# Problem 23: Sum of Array Elements
+# Given an array, find the sum of all elements
+def sum_array(nums):
+    """
+    Time Complexity: O(n)
+    Space Complexity: O(1)
+    """
+    total = 0
+    for num in nums:
+        total += num
+    return total
+
+
 # Test cases
 if __name__ == "__main__":
     # Test Two Sum
@@ -532,3 +545,7 @@ if __name__ == "__main__":
     # Test Find Minimum Element
     print("\nProblem 22 - Find Minimum Element:")
     print(find_min_element([3, 1, 7, 0, 5]))  # Output: 0
+    
+    # Test Sum of Array Elements
+    print("\nProblem 23 - Sum of Array Elements:")
+    print(sum_array([1, 2, 3, 4, 5]))  # Output: 15

@@ -514,6 +514,20 @@ public class array_problems {
         return minimum;
     }
     
+    // Problem 23: Sum of Array Elements
+    // Given an array, find the sum of all elements
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int sumArray(int[] nums) {
+        int total = 0;
+        for (int num : nums) {
+            total += num;
+        }
+        return total;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -619,5 +633,9 @@ public class array_problems {
         // Test Find Minimum Element
         System.out.println("\nProblem 22 - Find Minimum Element:");
         System.out.println(findMinElement(new int[]{3, 1, 7, 0, 5})); // Output: 0
+        
+        // Test Sum of Array Elements
+        System.out.println("\nProblem 23 - Sum of Array Elements:");
+        System.out.println(sumArray(new int[]{1, 2, 3, 4, 5})); // Output: 15
     }
 }

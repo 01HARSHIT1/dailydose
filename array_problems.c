@@ -527,6 +527,20 @@ int findMinElement(int* nums, int numsSize) {
     return minimum;
 }
 
+// Problem 23: Sum of Array Elements
+// Given an array, find the sum of all elements
+/**
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+int sumArray(int* nums, int numsSize) {
+    int total = 0;
+    for (int i = 0; i < numsSize; i++) {
+        total += nums[i];
+    }
+    return total;
+}
+
 // Helper function to print array
 void printArray(int* arr, int size) {
     printf("[");
@@ -657,6 +671,11 @@ int main() {
     printf("\nProblem 22 - Find Minimum Element:\n");
     int nums21[] = {3, 1, 7, 0, 5};
     printf("%d\n", findMinElement(nums21, 5)); // Output: 0
+    
+    // Test Sum of Array Elements
+    printf("\nProblem 23 - Sum of Array Elements:\n");
+    int nums22[] = {1, 2, 3, 4, 5};
+    printf("%d\n", sumArray(nums22, 5)); // Output: 15
     
     return 0;
 }
