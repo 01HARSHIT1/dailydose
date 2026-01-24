@@ -528,6 +528,25 @@ public class array_problems {
         return total;
     }
     
+    // Problem 24: Reverse Array
+    // Given an array, reverse it in-place
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static void reverseArray(int[] nums) {
+        int left = 0;
+        int right = nums.length - 1;
+        
+        while (left < right) {
+            int temp = nums[left];
+            nums[left] = nums[right];
+            nums[right] = temp;
+            left++;
+            right--;
+        }
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -637,5 +656,11 @@ public class array_problems {
         // Test Sum of Array Elements
         System.out.println("\nProblem 23 - Sum of Array Elements:");
         System.out.println(sumArray(new int[]{1, 2, 3, 4, 5})); // Output: 15
+        
+        // Test Reverse Array
+        System.out.println("\nProblem 24 - Reverse Array:");
+        int[] nums24 = {1, 2, 3, 4, 5};
+        reverseArray(nums24);
+        printArray(nums24); // Output: [5, 4, 3, 2, 1]
     }
 }
