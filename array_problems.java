@@ -1007,6 +1007,33 @@ public class array_problems {
         return max - min;
     }
     
+    // Problem 43: Find Minimum Difference Between Two Elements
+    // Given an array, find the minimum absolute difference between any two elements
+    /**
+     * Time Complexity: O(n log n) - due to sorting
+     * Space Complexity: O(1)
+     */
+    public static int minDifference(int[] nums) {
+        if (nums == null || nums.length < 2) {
+            throw new IllegalArgumentException("Array must have at least 2 elements");
+        }
+        
+        // Sort the array to find minimum difference between adjacent elements
+        java.util.Arrays.sort(nums);
+        
+        int minDiff = Integer.MAX_VALUE;
+        
+        // Find minimum difference between adjacent elements
+        for (int i = 1; i < nums.length; i++) {
+            int diff = Math.abs(nums[i] - nums[i - 1]);
+            if (diff < minDiff) {
+                minDiff = diff;
+            }
+        }
+        
+        return minDiff;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1201,5 +1228,9 @@ public class array_problems {
         // Test Find Maximum Difference Between Two Elements
         System.out.println("\nProblem 42 - Find Maximum Difference Between Two Elements:");
         System.out.println(maxDifference(new int[]{7, 2, 9, 5, 1})); // Output: 8
+        
+        // Test Find Minimum Difference Between Two Elements
+        System.out.println("\nProblem 43 - Find Minimum Difference Between Two Elements:");
+        System.out.println(minDifference(new int[]{7, 2, 9, 5, 1})); // Output: 1
     }
 }
