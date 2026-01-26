@@ -938,6 +938,22 @@ public class array_problems {
         return negative;
     }
     
+    // Problem 40: Count Zeros in Array
+    // Given an array, count how many zeros are present
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int countZeros(int[] nums) {
+        int count = 0;
+        for (int num : nums) {
+            if (num == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1120,5 +1136,9 @@ public class array_problems {
         // Test Find All Negative Numbers
         System.out.println("\nProblem 39 - Find All Negative Numbers:");
         System.out.println(findAllNegative(new int[]{-1, 2, -3, 4, 0, 5, -6})); // Output: [-1, -3, -6]
+        
+        // Test Count Zeros in Array
+        System.out.println("\nProblem 40 - Count Zeros in Array:");
+        System.out.println(countZeros(new int[]{0, 1, 0, 3, 0, 5, 0})); // Output: 4
     }
 }
