@@ -896,6 +896,27 @@ public class array_problems {
         return unique;
     }
     
+    // Problem 38: Find All Positive Numbers
+    // Given an array, find all positive numbers (greater than 0)
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(n)
+     */
+    public static java.util.List<Integer> findAllPositive(int[] nums) {
+        java.util.List<Integer> positive = new java.util.ArrayList<>();
+        if (nums == null || nums.length == 0) {
+            return positive;
+        }
+        
+        for (int num : nums) {
+            if (num > 0) {
+                positive.add(num);
+            }
+        }
+        
+        return positive;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1070,5 +1091,9 @@ public class array_problems {
         // Test Find All Unique Elements
         System.out.println("\nProblem 37 - Find All Unique Elements:");
         System.out.println(findUniqueElements(new int[]{1, 2, 2, 3, 4, 4, 5})); // Output: [1, 3, 5]
+        
+        // Test Find All Positive Numbers
+        System.out.println("\nProblem 38 - Find All Positive Numbers:");
+        System.out.println(findAllPositive(new int[]{-1, 2, -3, 4, 0, 5, -6})); // Output: [2, 4, 5]
     }
 }
