@@ -954,6 +954,33 @@ public class array_problems {
         return count;
     }
     
+    // Problem 41: Find Minimum Sum of Two Elements
+    // Given an array, find the minimum sum of any two elements
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int minSumOfTwo(int[] nums) {
+        if (nums == null || nums.length < 2) {
+            throw new IllegalArgumentException("Array must have at least 2 elements");
+        }
+        
+        int min1 = Integer.MAX_VALUE;
+        int min2 = Integer.MAX_VALUE;
+        
+        // Find two smallest elements
+        for (int num : nums) {
+            if (num < min1) {
+                min2 = min1;
+                min1 = num;
+            } else if (num < min2) {
+                min2 = num;
+            }
+        }
+        
+        return min1 + min2;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1140,5 +1167,9 @@ public class array_problems {
         // Test Count Zeros in Array
         System.out.println("\nProblem 40 - Count Zeros in Array:");
         System.out.println(countZeros(new int[]{0, 1, 0, 3, 0, 5, 0})); // Output: 4
+        
+        // Test Find Minimum Sum of Two Elements
+        System.out.println("\nProblem 41 - Find Minimum Sum of Two Elements:");
+        System.out.println(minSumOfTwo(new int[]{5, 2, 8, 1, 9})); // Output: 3
     }
 }
