@@ -765,6 +765,44 @@ public class array_problems {
         return duplicates;
     }
     
+    // Problem 34: Find Peak Element
+    // A peak element is an element that is greater than its neighbors
+    // Given an array, find any peak element's index
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int findPeakElement(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("Array must not be empty");
+        }
+        
+        // If array has only one element, it's a peak
+        if (nums.length == 1) {
+            return 0;
+        }
+        
+        // Check first element
+        if (nums[0] > nums[1]) {
+            return 0;
+        }
+        
+        // Check last element
+        if (nums[nums.length - 1] > nums[nums.length - 2]) {
+            return nums.length - 1;
+        }
+        
+        // Check middle elements
+        for (int i = 1; i < nums.length - 1; i++) {
+            if (nums[i] > nums[i - 1] && nums[i] > nums[i + 1]) {
+                return i;
+            }
+        }
+        
+        // If no peak found (shouldn't happen in valid input), return -1
+        return -1;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -922,5 +960,9 @@ public class array_problems {
         // Test Find All Duplicates in Array
         System.out.println("\nProblem 33 - Find All Duplicates in Array:");
         System.out.println(findAllDuplicates(new int[]{4, 3, 2, 7, 8, 2, 3, 1})); // Output: [2, 3]
+        
+        // Test Find Peak Element
+        System.out.println("\nProblem 34 - Find Peak Element:");
+        System.out.println(findPeakElement(new int[]{1, 2, 3, 1})); // Output: 2
     }
 }
