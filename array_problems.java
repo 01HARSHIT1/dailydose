@@ -917,6 +917,27 @@ public class array_problems {
         return positive;
     }
     
+    // Problem 39: Find All Negative Numbers
+    // Given an array, find all negative numbers (less than 0)
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(n)
+     */
+    public static java.util.List<Integer> findAllNegative(int[] nums) {
+        java.util.List<Integer> negative = new java.util.ArrayList<>();
+        if (nums == null || nums.length == 0) {
+            return negative;
+        }
+        
+        for (int num : nums) {
+            if (num < 0) {
+                negative.add(num);
+            }
+        }
+        
+        return negative;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1095,5 +1116,9 @@ public class array_problems {
         // Test Find All Positive Numbers
         System.out.println("\nProblem 38 - Find All Positive Numbers:");
         System.out.println(findAllPositive(new int[]{-1, 2, -3, 4, 0, 5, -6})); // Output: [2, 4, 5]
+        
+        // Test Find All Negative Numbers
+        System.out.println("\nProblem 39 - Find All Negative Numbers:");
+        System.out.println(findAllNegative(new int[]{-1, 2, -3, 4, 0, 5, -6})); // Output: [-1, -3, -6]
     }
 }
