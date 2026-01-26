@@ -981,6 +981,32 @@ public class array_problems {
         return min1 + min2;
     }
     
+    // Problem 42: Find Maximum Difference Between Two Elements
+    // Given an array, find the maximum difference between two elements (max - min)
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int maxDifference(int[] nums) {
+        if (nums == null || nums.length < 2) {
+            throw new IllegalArgumentException("Array must have at least 2 elements");
+        }
+        
+        int min = nums[0];
+        int max = nums[0];
+        
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] < min) {
+                min = nums[i];
+            }
+            if (nums[i] > max) {
+                max = nums[i];
+            }
+        }
+        
+        return max - min;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1171,5 +1197,9 @@ public class array_problems {
         // Test Find Minimum Sum of Two Elements
         System.out.println("\nProblem 41 - Find Minimum Sum of Two Elements:");
         System.out.println(minSumOfTwo(new int[]{5, 2, 8, 1, 9})); // Output: 3
+        
+        // Test Find Maximum Difference Between Two Elements
+        System.out.println("\nProblem 42 - Find Maximum Difference Between Two Elements:");
+        System.out.println(maxDifference(new int[]{7, 2, 9, 5, 1})); // Output: 8
     }
 }
