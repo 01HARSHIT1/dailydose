@@ -867,6 +867,35 @@ public class array_problems {
         return true;
     }
     
+    // Problem 37: Find All Unique Elements
+    // Given an array, find all elements that appear exactly once
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(n)
+     */
+    public static java.util.List<Integer> findUniqueElements(int[] nums) {
+        java.util.List<Integer> unique = new java.util.ArrayList<>();
+        if (nums == null || nums.length == 0) {
+            return unique;
+        }
+        
+        java.util.Map<Integer, Integer> frequency = new java.util.HashMap<>();
+        
+        // Count frequency of each element
+        for (int num : nums) {
+            frequency.put(num, frequency.getOrDefault(num, 0) + 1);
+        }
+        
+        // Find all elements that appear exactly once
+        for (java.util.Map.Entry<Integer, Integer> entry : frequency.entrySet()) {
+            if (entry.getValue() == 1) {
+                unique.add(entry.getKey());
+            }
+        }
+        
+        return unique;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1037,5 +1066,9 @@ public class array_problems {
         System.out.println("\nProblem 36 - Check if Array is Palindrome:");
         System.out.println(isPalindrome(new int[]{1, 2, 3, 2, 1})); // Output: true
         System.out.println(isPalindrome(new int[]{1, 2, 3, 4, 5})); // Output: false
+        
+        // Test Find All Unique Elements
+        System.out.println("\nProblem 37 - Find All Unique Elements:");
+        System.out.println(findUniqueElements(new int[]{1, 2, 2, 3, 4, 4, 5})); // Output: [1, 3, 5]
     }
 }
