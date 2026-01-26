@@ -842,6 +842,31 @@ public class array_problems {
         return Math.max(max1 * max2, min1 * min2);
     }
     
+    // Problem 36: Check if Array is Palindrome
+    // Given an array, check if it reads the same forwards and backwards
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static boolean isPalindrome(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return true; // Empty array is considered palindrome
+        }
+        
+        int left = 0;
+        int right = nums.length - 1;
+        
+        while (left < right) {
+            if (nums[left] != nums[right]) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        
+        return true;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1007,5 +1032,10 @@ public class array_problems {
         // Test Find Maximum Product of Two Elements
         System.out.println("\nProblem 35 - Find Maximum Product of Two Elements:");
         System.out.println(maxProductOfTwo(new int[]{1, 2, 3, 4, 5})); // Output: 20
+        
+        // Test Check if Array is Palindrome
+        System.out.println("\nProblem 36 - Check if Array is Palindrome:");
+        System.out.println(isPalindrome(new int[]{1, 2, 3, 2, 1})); // Output: true
+        System.out.println(isPalindrome(new int[]{1, 2, 3, 4, 5})); // Output: false
     }
 }
