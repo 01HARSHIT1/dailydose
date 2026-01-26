@@ -1034,6 +1034,27 @@ public class array_problems {
         return minDiff;
     }
     
+    // Problem 44: Find All Elements Greater Than a Value
+    // Given an array and a value, find all elements greater than that value
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(n)
+     */
+    public static java.util.List<Integer> findElementsGreaterThan(int[] nums, int value) {
+        java.util.List<Integer> result = new java.util.ArrayList<>();
+        if (nums == null || nums.length == 0) {
+            return result;
+        }
+        
+        for (int num : nums) {
+            if (num > value) {
+                result.add(num);
+            }
+        }
+        
+        return result;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1232,5 +1253,9 @@ public class array_problems {
         // Test Find Minimum Difference Between Two Elements
         System.out.println("\nProblem 43 - Find Minimum Difference Between Two Elements:");
         System.out.println(minDifference(new int[]{7, 2, 9, 5, 1})); // Output: 1
+        
+        // Test Find All Elements Greater Than a Value
+        System.out.println("\nProblem 44 - Find All Elements Greater Than a Value:");
+        System.out.println(findElementsGreaterThan(new int[]{1, 5, 3, 8, 2, 7}, 4)); // Output: [5, 8, 7]
     }
 }
