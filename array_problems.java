@@ -1125,6 +1125,27 @@ public class array_problems {
         return result;
     }
     
+    // Problem 48: Find Sum of All Elements Greater Than a Value
+    // Given an array and a value, find the sum of all elements greater than that value
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int sumElementsGreaterThan(int[] nums, int value) {
+        int sum = 0;
+        if (nums == null || nums.length == 0) {
+            return sum;
+        }
+        
+        for (int num : nums) {
+            if (num > value) {
+                sum += num;
+            }
+        }
+        
+        return sum;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1339,5 +1360,9 @@ public class array_problems {
         // Test Find All Elements Between Two Values
         System.out.println("\nProblem 47 - Find All Elements Between Two Values:");
         System.out.println(findElementsBetween(new int[]{1, 5, 3, 8, 2, 7, 4}, 3, 6)); // Output: [5, 3, 4]
+        
+        // Test Find Sum of All Elements Greater Than a Value
+        System.out.println("\nProblem 48 - Find Sum of All Elements Greater Than a Value:");
+        System.out.println(sumElementsGreaterThan(new int[]{1, 5, 3, 8, 2, 7}, 4)); // Output: 20
     }
 }
