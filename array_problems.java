@@ -1254,6 +1254,25 @@ public class array_problems {
         return result;
     }
     
+    // Problem 54: Find All Elements at Odd Indices
+    // Given an array, find all elements at odd indices (1, 3, 5, ...)
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(n)
+     */
+    public static java.util.List<Integer> findElementsAtOddIndices(int[] nums) {
+        java.util.List<Integer> result = new java.util.ArrayList<>();
+        if (nums == null || nums.length == 0) {
+            return result;
+        }
+        
+        for (int i = 1; i < nums.length; i += 2) {
+            result.add(nums[i]);
+        }
+        
+        return result;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1492,5 +1511,9 @@ public class array_problems {
         // Test Find All Elements at Even Indices
         System.out.println("\nProblem 53 - Find All Elements at Even Indices:");
         System.out.println(findElementsAtEvenIndices(new int[]{10, 20, 30, 40, 50, 60})); // Output: [10, 30, 50]
+        
+        // Test Find All Elements at Odd Indices
+        System.out.println("\nProblem 54 - Find All Elements at Odd Indices:");
+        System.out.println(findElementsAtOddIndices(new int[]{10, 20, 30, 40, 50, 60})); // Output: [20, 40, 60]
     }
 }
