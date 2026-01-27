@@ -1146,6 +1146,27 @@ public class array_problems {
         return sum;
     }
     
+    // Problem 49: Find Sum of All Elements Less Than a Value
+    // Given an array and a value, find the sum of all elements less than that value
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int sumElementsLessThan(int[] nums, int value) {
+        int sum = 0;
+        if (nums == null || nums.length == 0) {
+            return sum;
+        }
+        
+        for (int num : nums) {
+            if (num < value) {
+                sum += num;
+            }
+        }
+        
+        return sum;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1364,5 +1385,9 @@ public class array_problems {
         // Test Find Sum of All Elements Greater Than a Value
         System.out.println("\nProblem 48 - Find Sum of All Elements Greater Than a Value:");
         System.out.println(sumElementsGreaterThan(new int[]{1, 5, 3, 8, 2, 7}, 4)); // Output: 20
+        
+        // Test Find Sum of All Elements Less Than a Value
+        System.out.println("\nProblem 49 - Find Sum of All Elements Less Than a Value:");
+        System.out.println(sumElementsLessThan(new int[]{1, 5, 3, 8, 2, 7}, 4)); // Output: 6
     }
 }
