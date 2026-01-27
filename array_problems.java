@@ -1055,6 +1055,27 @@ public class array_problems {
         return result;
     }
     
+    // Problem 45: Find All Elements Less Than a Value
+    // Given an array and a value, find all elements less than that value
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(n)
+     */
+    public static java.util.List<Integer> findElementsLessThan(int[] nums, int value) {
+        java.util.List<Integer> result = new java.util.ArrayList<>();
+        if (nums == null || nums.length == 0) {
+            return result;
+        }
+        
+        for (int num : nums) {
+            if (num < value) {
+                result.add(num);
+            }
+        }
+        
+        return result;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1257,5 +1278,9 @@ public class array_problems {
         // Test Find All Elements Greater Than a Value
         System.out.println("\nProblem 44 - Find All Elements Greater Than a Value:");
         System.out.println(findElementsGreaterThan(new int[]{1, 5, 3, 8, 2, 7}, 4)); // Output: [5, 8, 7]
+        
+        // Test Find All Elements Less Than a Value
+        System.out.println("\nProblem 45 - Find All Elements Less Than a Value:");
+        System.out.println(findElementsLessThan(new int[]{1, 5, 3, 8, 2, 7}, 4)); // Output: [1, 3, 2]
     }
 }
