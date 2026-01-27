@@ -1097,6 +1097,34 @@ public class array_problems {
         return result;
     }
     
+    // Problem 47: Find All Elements Between Two Values
+    // Given an array and two values (min and max), find all elements between them (inclusive)
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(n)
+     */
+    public static java.util.List<Integer> findElementsBetween(int[] nums, int min, int max) {
+        java.util.List<Integer> result = new java.util.ArrayList<>();
+        if (nums == null || nums.length == 0) {
+            return result;
+        }
+        
+        // Ensure min <= max
+        if (min > max) {
+            int temp = min;
+            min = max;
+            max = temp;
+        }
+        
+        for (int num : nums) {
+            if (num >= min && num <= max) {
+                result.add(num);
+            }
+        }
+        
+        return result;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1307,5 +1335,9 @@ public class array_problems {
         // Test Find All Elements Equal To a Value
         System.out.println("\nProblem 46 - Find All Elements Equal To a Value:");
         System.out.println(findElementsEqualTo(new int[]{1, 5, 3, 5, 2, 5}, 5)); // Output: [5, 5, 5]
+        
+        // Test Find All Elements Between Two Values
+        System.out.println("\nProblem 47 - Find All Elements Between Two Values:");
+        System.out.println(findElementsBetween(new int[]{1, 5, 3, 8, 2, 7, 4}, 3, 6)); // Output: [5, 3, 4]
     }
 }
