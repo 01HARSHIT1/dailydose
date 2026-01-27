@@ -1235,6 +1235,25 @@ public class array_problems {
         return product;
     }
     
+    // Problem 53: Find All Elements at Even Indices
+    // Given an array, find all elements at even indices (0, 2, 4, ...)
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(n)
+     */
+    public static java.util.List<Integer> findElementsAtEvenIndices(int[] nums) {
+        java.util.List<Integer> result = new java.util.ArrayList<>();
+        if (nums == null || nums.length == 0) {
+            return result;
+        }
+        
+        for (int i = 0; i < nums.length; i += 2) {
+            result.add(nums[i]);
+        }
+        
+        return result;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1469,5 +1488,9 @@ public class array_problems {
         // Test Find Product of All Elements
         System.out.println("\nProblem 52 - Find Product of All Elements:");
         System.out.println(productOfAllElements(new int[]{1, 2, 3, 4})); // Output: 24
+        
+        // Test Find All Elements at Even Indices
+        System.out.println("\nProblem 53 - Find All Elements at Even Indices:");
+        System.out.println(findElementsAtEvenIndices(new int[]{10, 20, 30, 40, 50, 60})); // Output: [10, 30, 50]
     }
 }
