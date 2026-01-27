@@ -1188,6 +1188,34 @@ public class array_problems {
         return sum;
     }
     
+    // Problem 51: Find Sum of All Elements Between Two Values
+    // Given an array and two values (min and max), find the sum of all elements between them (inclusive)
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int sumElementsBetween(int[] nums, int min, int max) {
+        int sum = 0;
+        if (nums == null || nums.length == 0) {
+            return sum;
+        }
+        
+        // Ensure min <= max
+        if (min > max) {
+            int temp = min;
+            min = max;
+            max = temp;
+        }
+        
+        for (int num : nums) {
+            if (num >= min && num <= max) {
+                sum += num;
+            }
+        }
+        
+        return sum;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1414,5 +1442,9 @@ public class array_problems {
         // Test Find Sum of All Elements Equal To a Value
         System.out.println("\nProblem 50 - Find Sum of All Elements Equal To a Value:");
         System.out.println(sumElementsEqualTo(new int[]{1, 5, 3, 5, 2, 5}, 5)); // Output: 15
+        
+        // Test Find Sum of All Elements Between Two Values
+        System.out.println("\nProblem 51 - Find Sum of All Elements Between Two Values:");
+        System.out.println(sumElementsBetween(new int[]{1, 5, 3, 8, 2, 7, 4}, 3, 6)); // Output: 12
     }
 }
