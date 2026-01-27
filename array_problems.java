@@ -1216,6 +1216,25 @@ public class array_problems {
         return sum;
     }
     
+    // Problem 52: Find Product of All Elements
+    // Given an array, find the product of all elements
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static long productOfAllElements(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("Array must not be empty");
+        }
+        
+        long product = 1;
+        for (int num : nums) {
+            product *= num;
+        }
+        
+        return product;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1446,5 +1465,9 @@ public class array_problems {
         // Test Find Sum of All Elements Between Two Values
         System.out.println("\nProblem 51 - Find Sum of All Elements Between Two Values:");
         System.out.println(sumElementsBetween(new int[]{1, 5, 3, 8, 2, 7, 4}, 3, 6)); // Output: 12
+        
+        // Test Find Product of All Elements
+        System.out.println("\nProblem 52 - Find Product of All Elements:");
+        System.out.println(productOfAllElements(new int[]{1, 2, 3, 4})); // Output: 24
     }
 }
