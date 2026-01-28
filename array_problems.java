@@ -1273,6 +1273,64 @@ public class array_problems {
         return result;
     }
     
+    // Problem 55: Find Sum of Elements at Even Indices
+    // Given an array, find the sum of all elements at even indices (0, 2, 4, ...)
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int sumElementsAtEvenIndices(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        
+        int sum = 0;
+        for (int i = 0; i < nums.length; i += 2) {
+            sum += nums[i];
+        }
+        
+        return sum;
+    }
+    
+    // Problem 56: Find Sum of Elements at Odd Indices
+    // Given an array, find the sum of all elements at odd indices (1, 3, 5, ...)
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int sumElementsAtOddIndices(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        
+        int sum = 0;
+        for (int i = 1; i < nums.length; i += 2) {
+            sum += nums[i];
+        }
+        
+        return sum;
+    }
+    
+    // Problem 57: Find Index of Last Occurrence of Element
+    // Given an array and a target, return the index of the last occurrence of target, or -1 if not found
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int lastIndexOf(int[] nums, int target) {
+        if (nums == null) {
+            return -1;
+        }
+        
+        for (int i = nums.length - 1; i >= 0; i--) {
+            if (nums[i] == target) {
+                return i;
+            }
+        }
+        
+        return -1;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1515,5 +1573,17 @@ public class array_problems {
         // Test Find All Elements at Odd Indices
         System.out.println("\nProblem 54 - Find All Elements at Odd Indices:");
         System.out.println(findElementsAtOddIndices(new int[]{10, 20, 30, 40, 50, 60})); // Output: [20, 40, 60]
+        
+        // Test Find Sum of Elements at Even Indices
+        System.out.println("\nProblem 55 - Find Sum of Elements at Even Indices:");
+        System.out.println(sumElementsAtEvenIndices(new int[]{10, 20, 30, 40, 50, 60})); // Output: 90
+        
+        // Test Find Sum of Elements at Odd Indices
+        System.out.println("\nProblem 56 - Find Sum of Elements at Odd Indices:");
+        System.out.println(sumElementsAtOddIndices(new int[]{10, 20, 30, 40, 50, 60})); // Output: 120
+        
+        // Test Find Index of Last Occurrence of Element
+        System.out.println("\nProblem 57 - Find Index of Last Occurrence of Element:");
+        System.out.println(lastIndexOf(new int[]{2, 5, 3, 5, 7, 5, 9}, 5)); // Output: 5
     }
 }
