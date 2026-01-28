@@ -1382,6 +1382,25 @@ public class array_problems {
         return maxIdx;
     }
 
+    // Problem 60: Check if Array Contains Value
+    // Given an array and a target, return true if target exists in array, false
+    // otherwise
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static boolean contains(int[] nums, int target) {
+        if (nums == null) {
+            return false;
+        }
+        for (int num : nums) {
+            if (num == target) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1644,5 +1663,10 @@ public class array_problems {
         // Test Find Index of Maximum Element
         System.out.println("\nProblem 59 - Find Index of Maximum Element:");
         System.out.println(indexOfMax(new int[] { 3, 1, 7, 0, 5 })); // Output: 2
+
+        // Test Check if Array Contains Value
+        System.out.println("\nProblem 60 - Check if Array Contains Value:");
+        System.out.println(contains(new int[] { 1, 5, 3, 8, 2 }, 8)); // Output: true
+        System.out.println(contains(new int[] { 1, 5, 3, 8, 2 }, 4)); // Output: false
     }
 }
