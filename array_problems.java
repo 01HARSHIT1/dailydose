@@ -1331,6 +1331,26 @@ public class array_problems {
         return -1;
     }
     
+    // Problem 58: Find Index of Minimum Element
+    // Given an array, return the index of the smallest element
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int indexOfMin(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("Array must not be empty");
+        }
+        
+        int minIdx = 0;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] < nums[minIdx]) {
+                minIdx = i;
+            }
+        }
+        return minIdx;
+    }
+    
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1585,5 +1605,9 @@ public class array_problems {
         // Test Find Index of Last Occurrence of Element
         System.out.println("\nProblem 57 - Find Index of Last Occurrence of Element:");
         System.out.println(lastIndexOf(new int[]{2, 5, 3, 5, 7, 5, 9}, 5)); // Output: 5
+        
+        // Test Find Index of Minimum Element
+        System.out.println("\nProblem 58 - Find Index of Minimum Element:");
+        System.out.println(indexOfMin(new int[]{3, 1, 7, 0, 5})); // Output: 3
     }
 }
