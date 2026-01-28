@@ -1455,6 +1455,19 @@ public class array_problems {
         return result;
     }
 
+    // Problem 64: Copy Array
+    // Given an array, return a new array with the same elements (shallow copy)
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(n)
+     */
+    public static int[] copyArray(int[] nums) {
+        if (nums == null) {
+            return null;
+        }
+        return Arrays.copyOf(nums, nums.length);
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1736,5 +1749,9 @@ public class array_problems {
         // Test Create Array Filled with Value
         System.out.println("\nProblem 63 - Create Array Filled with Value:");
         printArray(createFilledArray(5, 7)); // Output: [7, 7, 7, 7, 7]
+
+        // Test Copy Array
+        System.out.println("\nProblem 64 - Copy Array:");
+        printArray(copyArray(new int[] { 1, 2, 3, 4, 5 })); // Output: [1, 2, 3, 4, 5]
     }
 }
