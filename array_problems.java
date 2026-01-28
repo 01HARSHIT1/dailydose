@@ -1401,6 +1401,25 @@ public class array_problems {
         return false;
     }
 
+    // Problem 61: Find All Indices of an Element
+    // Given an array and a target, return list of all indices where target appears
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(k), k = number of occurrences
+     */
+    public static java.util.List<Integer> findAllIndices(int[] nums, int target) {
+        java.util.List<Integer> indices = new java.util.ArrayList<>();
+        if (nums == null) {
+            return indices;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == target) {
+                indices.add(i);
+            }
+        }
+        return indices;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1668,5 +1687,9 @@ public class array_problems {
         System.out.println("\nProblem 60 - Check if Array Contains Value:");
         System.out.println(contains(new int[] { 1, 5, 3, 8, 2 }, 8)); // Output: true
         System.out.println(contains(new int[] { 1, 5, 3, 8, 2 }, 4)); // Output: false
+
+        // Test Find All Indices of an Element
+        System.out.println("\nProblem 61 - Find All Indices of an Element:");
+        System.out.println(findAllIndices(new int[] { 2, 5, 3, 5, 7, 5, 9 }, 5)); // Output: [1, 3, 5]
     }
 }
