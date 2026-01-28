@@ -1468,6 +1468,21 @@ public class array_problems {
         return Arrays.copyOf(nums, nums.length);
     }
 
+    // Problem 65: Swap Two Elements in Array
+    // Given an array and two indices, swap the elements at those indices in-place
+    /**
+     * Time Complexity: O(1)
+     * Space Complexity: O(1)
+     */
+    public static void swap(int[] nums, int i, int j) {
+        if (nums == null || i < 0 || i >= nums.length || j < 0 || j >= nums.length) {
+            throw new IllegalArgumentException("Invalid array or indices");
+        }
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1753,5 +1768,11 @@ public class array_problems {
         // Test Copy Array
         System.out.println("\nProblem 64 - Copy Array:");
         printArray(copyArray(new int[] { 1, 2, 3, 4, 5 })); // Output: [1, 2, 3, 4, 5]
+
+        // Test Swap Two Elements in Array
+        System.out.println("\nProblem 65 - Swap Two Elements in Array:");
+        int[] nums65 = { 10, 20, 30, 40, 50 };
+        swap(nums65, 0, 4);
+        printArray(nums65); // Output: [50, 20, 30, 40, 10]
     }
 }
