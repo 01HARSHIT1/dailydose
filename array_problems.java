@@ -1420,6 +1420,23 @@ public class array_problems {
         return indices;
     }
 
+    // Problem 62: Replace All Occurrences of a Value
+    // Given an array, replace all occurrences of oldVal with newVal in-place
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static void replaceAll(int[] nums, int oldVal, int newVal) {
+        if (nums == null) {
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == oldVal) {
+                nums[i] = newVal;
+            }
+        }
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1691,5 +1708,11 @@ public class array_problems {
         // Test Find All Indices of an Element
         System.out.println("\nProblem 61 - Find All Indices of an Element:");
         System.out.println(findAllIndices(new int[] { 2, 5, 3, 5, 7, 5, 9 }, 5)); // Output: [1, 3, 5]
+
+        // Test Replace All Occurrences of a Value
+        System.out.println("\nProblem 62 - Replace All Occurrences of a Value:");
+        int[] nums62 = { 1, 2, 2, 3, 2, 4 };
+        replaceAll(nums62, 2, 9);
+        printArray(nums62); // Output: [1, 9, 9, 3, 9, 4]
     }
 }
