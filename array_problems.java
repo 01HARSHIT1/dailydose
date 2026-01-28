@@ -5,9 +5,9 @@ import java.util.*;
  * Collection of common array problems with solutions
  */
 public class array_problems {
-    
+
     // Problem 1: Two Sum
-    // Given an array of integers nums and an integer target, 
+    // Given an array of integers nums and an integer target,
     // return indices of the two numbers such that they add up to target.
     /**
      * Time Complexity: O(n)
@@ -18,13 +18,13 @@ public class array_problems {
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i];
             if (numMap.containsKey(complement)) {
-                return new int[]{numMap.get(complement), i};
+                return new int[] { numMap.get(complement), i };
             }
             numMap.put(nums[i], i);
         }
-        return new int[]{};
+        return new int[] {};
     }
-    
+
     // Problem 2: Maximum Subarray (Kadane's Algorithm)
     // Find the contiguous subarray with the largest sum
     /**
@@ -40,7 +40,7 @@ public class array_problems {
         }
         return maxSum;
     }
-    
+
     // Problem 3: Best Time to Buy and Sell Stock
     // Find the maximum profit from buying and selling stock once
     /**
@@ -51,18 +51,18 @@ public class array_problems {
         if (prices.length == 0) {
             return 0;
         }
-        
+
         int minPrice = prices[0];
         int maxProfit = 0;
-        
+
         for (int i = 1; i < prices.length; i++) {
             maxProfit = Math.max(maxProfit, prices[i] - minPrice);
             minPrice = Math.min(minPrice, prices[i]);
         }
-        
+
         return maxProfit;
     }
-    
+
     // Problem 4: Contains Duplicate
     // Check if array contains any duplicates
     /**
@@ -79,9 +79,9 @@ public class array_problems {
         }
         return false;
     }
-    
+
     // Problem 5: Product of Array Except Self
-    // Return an array output such that output[i] is equal to the 
+    // Return an array output such that output[i] is equal to the
     // product of all elements of nums except nums[i]
     /**
      * Time Complexity: O(n)
@@ -91,22 +91,22 @@ public class array_problems {
         int n = nums.length;
         int[] result = new int[n];
         Arrays.fill(result, 1);
-        
+
         // Calculate left products
         for (int i = 1; i < n; i++) {
             result[i] = result[i - 1] * nums[i - 1];
         }
-        
+
         // Calculate right products and multiply
         int rightProduct = 1;
         for (int i = n - 1; i >= 0; i--) {
             result[i] *= rightProduct;
             rightProduct *= nums[i];
         }
-        
+
         return result;
     }
-    
+
     // Problem 6: Maximum Product Subarray
     // Find the contiguous subarray with the largest product
     /**
@@ -117,26 +117,26 @@ public class array_problems {
         if (nums.length == 0) {
             return 0;
         }
-        
+
         int maxProd = nums[0];
         int minProd = nums[0];
         int result = nums[0];
-        
+
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] < 0) {
                 int temp = maxProd;
                 maxProd = minProd;
                 minProd = temp;
             }
-            
+
             maxProd = Math.max(nums[i], maxProd * nums[i]);
             minProd = Math.min(nums[i], minProd * nums[i]);
             result = Math.max(result, maxProd);
         }
-        
+
         return result;
     }
-    
+
     // Problem 7: Find Minimum in Rotated Sorted Array
     // Find the minimum element in a rotated sorted array
     /**
@@ -146,7 +146,7 @@ public class array_problems {
     public static int findMinRotated(int[] nums) {
         int left = 0;
         int right = nums.length - 1;
-        
+
         while (left < right) {
             int mid = left + (right - left) / 2;
             if (nums[mid] > nums[right]) {
@@ -155,10 +155,10 @@ public class array_problems {
                 right = mid;
             }
         }
-        
+
         return nums[left];
     }
-    
+
     // Problem 8: Search in Rotated Sorted Array
     // Search for target in rotated sorted array
     /**
@@ -168,14 +168,14 @@ public class array_problems {
     public static int searchRotated(int[] nums, int target) {
         int left = 0;
         int right = nums.length - 1;
-        
+
         while (left <= right) {
             int mid = left + (right - left) / 2;
-            
+
             if (nums[mid] == target) {
                 return mid;
             }
-            
+
             // Left half is sorted
             if (nums[left] <= nums[mid]) {
                 if (nums[left] <= target && target < nums[mid]) {
@@ -193,10 +193,10 @@ public class array_problems {
                 }
             }
         }
-        
+
         return -1;
     }
-    
+
     // Problem 9: 3Sum
     // Find all unique triplets that sum to zero
     /**
@@ -207,18 +207,18 @@ public class array_problems {
         Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<>();
         int n = nums.length;
-        
+
         for (int i = 0; i < n - 2; i++) {
             if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
-            
+
             int left = i + 1;
             int right = n - 1;
-            
+
             while (left < right) {
                 int total = nums[i] + nums[left] + nums[right];
-                
+
                 if (total < 0) {
                     left++;
                 } else if (total > 0) {
@@ -236,10 +236,10 @@ public class array_problems {
                 }
             }
         }
-        
+
         return result;
     }
-    
+
     // Problem 10: Container With Most Water
     // Find two lines that together with x-axis forms a container with most water
     /**
@@ -250,22 +250,22 @@ public class array_problems {
         int left = 0;
         int right = height.length - 1;
         int maxWater = 0;
-        
+
         while (left < right) {
             int width = right - left;
             int currentArea = Math.min(height[left], height[right]) * width;
             maxWater = Math.max(maxWater, currentArea);
-            
+
             if (height[left] < height[right]) {
                 left++;
             } else {
                 right--;
             }
         }
-        
+
         return maxWater;
     }
-    
+
     // Problem 11: Merge Sorted Arrays
     // Merge two sorted arrays in-place (nums1 has enough space)
     /**
@@ -276,7 +276,7 @@ public class array_problems {
         int i = m - 1;
         int j = n - 1;
         int k = m + n - 1;
-        
+
         while (i >= 0 && j >= 0) {
             if (nums1[i] > nums2[j]) {
                 nums1[k] = nums1[i];
@@ -287,14 +287,14 @@ public class array_problems {
             }
             k--;
         }
-        
+
         while (j >= 0) {
             nums1[k] = nums2[j];
             j--;
             k--;
         }
     }
-    
+
     // Problem 12: Rotate Array
     // Rotate array to the right by k steps
     /**
@@ -304,12 +304,12 @@ public class array_problems {
     public static void rotateArray(int[] nums, int k) {
         int n = nums.length;
         k = k % n;
-        
+
         reverse(nums, 0, n - 1);
         reverse(nums, 0, k - 1);
         reverse(nums, k, n - 1);
     }
-    
+
     private static void reverse(int[] arr, int start, int end) {
         while (start < end) {
             int temp = arr[start];
@@ -319,31 +319,32 @@ public class array_problems {
             end--;
         }
     }
-    
+
     // Problem 13: Find First Repeating Element
-    // Given an array of integers, find the first element that appears more than once
+    // Given an array of integers, find the first element that appears more than
+    // once
     /**
      * Time Complexity: O(n)
      * Space Complexity: O(n)
      */
     public static int findFirstRepeating(int[] nums) {
         Map<Integer, Integer> countMap = new HashMap<>();
-        
+
         // Count occurrences of each element
         for (int num : nums) {
             countMap.put(num, countMap.getOrDefault(num, 0) + 1);
         }
-        
+
         // Find first element with count > 1
         for (int num : nums) {
             if (countMap.get(num) > 1) {
                 return num;
             }
         }
-        
+
         return -1; // No repeating element found
     }
-    
+
     // Problem 14: Find Missing Number
     // Given an array containing n distinct numbers taken from 0, 1, 2, ..., n,
     // find the one that is missing from the array
@@ -355,16 +356,17 @@ public class array_problems {
         int n = nums.length;
         int expectedSum = n * (n + 1) / 2; // Sum of numbers from 0 to n
         int actualSum = 0;
-        
+
         for (int num : nums) {
             actualSum += num;
         }
-        
+
         return expectedSum - actualSum;
     }
-    
+
     // Problem 15: Single Number
-    // Given a non-empty array of integers where every element appears twice except for one,
+    // Given a non-empty array of integers where every element appears twice except
+    // for one,
     // find the single one
     /**
      * Time Complexity: O(n)
@@ -377,7 +379,7 @@ public class array_problems {
         }
         return result;
     }
-    
+
     // Problem 16: Majority Element
     // Given an array of size n, find the element that appears more than n/2 times
     /**
@@ -388,7 +390,7 @@ public class array_problems {
     public static int majorityElement(int[] nums) {
         int candidate = 0;
         int count = 0;
-        
+
         for (int num : nums) {
             if (count == 0) {
                 candidate = num;
@@ -399,12 +401,13 @@ public class array_problems {
                 count--;
             }
         }
-        
+
         return candidate;
     }
-    
+
     // Problem 17: Count Occurrences of an Element
-    // Given an array and a target value, count how many times the target appears in the array
+    // Given an array and a target value, count how many times the target appears in
+    // the array
     /**
      * Time Complexity: O(n)
      * Space Complexity: O(1)
@@ -418,9 +421,10 @@ public class array_problems {
         }
         return count;
     }
-    
+
     // Problem 18: Linear Search
-    // Given an array and a target value, return the index of the target if found, otherwise -1
+    // Given an array and a target value, return the index of the target if found,
+    // otherwise -1
     /**
      * Time Complexity: O(n)
      * Space Complexity: O(1)
@@ -433,9 +437,10 @@ public class array_problems {
         }
         return -1;
     }
-    
+
     // Problem 19: Binary Search (Any Occurrence)
-    // Given a sorted array and a target value, return the index of the target if found, otherwise -1
+    // Given a sorted array and a target value, return the index of the target if
+    // found, otherwise -1
     /**
      * Time Complexity: O(log n)
      * Space Complexity: O(1)
@@ -443,10 +448,10 @@ public class array_problems {
     public static int binarySearch(int[] nums, int target) {
         int left = 0;
         int right = nums.length - 1;
-        
+
         while (left <= right) {
             int mid = left + (right - left) / 2;
-            
+
             if (nums[mid] == target) {
                 return mid;
             } else if (nums[mid] < target) {
@@ -455,10 +460,10 @@ public class array_problems {
                 right = mid - 1;
             }
         }
-        
+
         return -1;
     }
-    
+
     // Problem 20: Find Maximum Element
     // Given an array, find the maximum element
     /**
@@ -469,7 +474,7 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             throw new IllegalArgumentException("Array must not be empty");
         }
-        
+
         int maximum = nums[0];
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] > maximum) {
@@ -478,7 +483,7 @@ public class array_problems {
         }
         return maximum;
     }
-    
+
     // Problem 21: Check if Array is Sorted (Non-decreasing)
     // Given an array, check if it is sorted in non-decreasing order
     /**
@@ -493,7 +498,7 @@ public class array_problems {
         }
         return true;
     }
-    
+
     // Problem 22: Find Minimum Element
     // Given an array, find the minimum element
     /**
@@ -504,7 +509,7 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             throw new IllegalArgumentException("Array must not be empty");
         }
-        
+
         int minimum = nums[0];
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] < minimum) {
@@ -513,7 +518,7 @@ public class array_problems {
         }
         return minimum;
     }
-    
+
     // Problem 23: Sum of Array Elements
     // Given an array, find the sum of all elements
     /**
@@ -527,7 +532,7 @@ public class array_problems {
         }
         return total;
     }
-    
+
     // Problem 24: Reverse Array
     // Given an array, reverse it in-place
     /**
@@ -537,7 +542,7 @@ public class array_problems {
     public static void reverseArray(int[] nums) {
         int left = 0;
         int right = nums.length - 1;
-        
+
         while (left < right) {
             int temp = nums[left];
             nums[left] = nums[right];
@@ -546,7 +551,7 @@ public class array_problems {
             right--;
         }
     }
-    
+
     // Problem 25: Count Even Numbers in Array
     // Given an array, count how many numbers are even
     /**
@@ -562,7 +567,7 @@ public class array_problems {
         }
         return count;
     }
-    
+
     // Problem 26: Range of Array (Max - Min)
     // Given an array, find the difference between maximum and minimum elements
     /**
@@ -573,10 +578,10 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             throw new IllegalArgumentException("Array must not be empty");
         }
-        
+
         int minimum = nums[0];
         int maximum = nums[0];
-        
+
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] < minimum) {
                 minimum = nums[i];
@@ -585,10 +590,10 @@ public class array_problems {
                 maximum = nums[i];
             }
         }
-        
+
         return maximum - minimum;
     }
-    
+
     // Problem 27: Count Odd Numbers in Array
     // Given an array, count how many numbers are odd
     /**
@@ -604,7 +609,7 @@ public class array_problems {
         }
         return count;
     }
-    
+
     // Problem 28: Find Average of Array Elements
     // Given an array, find the average of all elements
     /**
@@ -615,15 +620,15 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             throw new IllegalArgumentException("Array must not be empty");
         }
-        
+
         int sum = 0;
         for (int num : nums) {
             sum += num;
         }
-        
+
         return (double) sum / nums.length;
     }
-    
+
     // Problem 29: Find Second Largest Element
     // Given an array, find the second largest element
     /**
@@ -634,10 +639,10 @@ public class array_problems {
         if (nums == null || nums.length < 2) {
             throw new IllegalArgumentException("Array must have at least 2 elements");
         }
-        
+
         int largest = Integer.MIN_VALUE;
         int secondLargest = Integer.MIN_VALUE;
-        
+
         for (int num : nums) {
             if (num > largest) {
                 secondLargest = largest;
@@ -646,14 +651,14 @@ public class array_problems {
                 secondLargest = num;
             }
         }
-        
+
         if (secondLargest == Integer.MIN_VALUE) {
             throw new IllegalArgumentException("No second largest element found");
         }
-        
+
         return secondLargest;
     }
-    
+
     // Problem 30: Find Second Smallest Element
     // Given an array, find the second smallest element
     /**
@@ -664,10 +669,10 @@ public class array_problems {
         if (nums == null || nums.length < 2) {
             throw new IllegalArgumentException("Array must have at least 2 elements");
         }
-        
+
         int smallest = Integer.MAX_VALUE;
         int secondSmallest = Integer.MAX_VALUE;
-        
+
         for (int num : nums) {
             if (num < smallest) {
                 secondSmallest = smallest;
@@ -676,14 +681,14 @@ public class array_problems {
                 secondSmallest = num;
             }
         }
-        
+
         if (secondSmallest == Integer.MAX_VALUE) {
             throw new IllegalArgumentException("No second smallest element found");
         }
-        
+
         return secondSmallest;
     }
-    
+
     // Problem 31: Remove Duplicates from Sorted Array
     // Given a sorted array, remove duplicates in-place and return the new length
     /**
@@ -694,9 +699,9 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        
+
         int writeIndex = 1; // Position to write next unique element
-        
+
         for (int readIndex = 1; readIndex < nums.length; readIndex++) {
             // If current element is different from previous, it's unique
             if (nums[readIndex] != nums[readIndex - 1]) {
@@ -704,12 +709,13 @@ public class array_problems {
                 writeIndex++;
             }
         }
-        
+
         return writeIndex; // Return new length
     }
-    
+
     // Problem 32: Move Zeros to End
-    // Given an array, move all zeros to the end while maintaining the relative order of non-zero elements
+    // Given an array, move all zeros to the end while maintaining the relative
+    // order of non-zero elements
     /**
      * Time Complexity: O(n)
      * Space Complexity: O(1)
@@ -718,9 +724,9 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return;
         }
-        
+
         int writeIndex = 0; // Position to write next non-zero element
-        
+
         // Move all non-zero elements to the front
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] != 0) {
@@ -728,14 +734,14 @@ public class array_problems {
                 writeIndex++;
             }
         }
-        
+
         // Fill remaining positions with zeros
         while (writeIndex < nums.length) {
             nums[writeIndex] = 0;
             writeIndex++;
         }
     }
-    
+
     // Problem 33: Find All Duplicates in Array
     // Given an array of integers, find all elements that appear twice
     /**
@@ -747,24 +753,24 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return duplicates;
         }
-        
+
         java.util.Map<Integer, Integer> frequency = new java.util.HashMap<>();
-        
+
         // Count frequency of each element
         for (int num : nums) {
             frequency.put(num, frequency.getOrDefault(num, 0) + 1);
         }
-        
+
         // Find all elements that appear twice
         for (java.util.Map.Entry<Integer, Integer> entry : frequency.entrySet()) {
             if (entry.getValue() == 2) {
                 duplicates.add(entry.getKey());
             }
         }
-        
+
         return duplicates;
     }
-    
+
     // Problem 34: Find Peak Element
     // A peak element is an element that is greater than its neighbors
     // Given an array, find any peak element's index
@@ -776,33 +782,33 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             throw new IllegalArgumentException("Array must not be empty");
         }
-        
+
         // If array has only one element, it's a peak
         if (nums.length == 1) {
             return 0;
         }
-        
+
         // Check first element
         if (nums[0] > nums[1]) {
             return 0;
         }
-        
+
         // Check last element
         if (nums[nums.length - 1] > nums[nums.length - 2]) {
             return nums.length - 1;
         }
-        
+
         // Check middle elements
         for (int i = 1; i < nums.length - 1; i++) {
             if (nums[i] > nums[i - 1] && nums[i] > nums[i + 1]) {
                 return i;
             }
         }
-        
+
         // If no peak found (shouldn't happen in valid input), return -1
         return -1;
     }
-    
+
     // Problem 35: Find Maximum Product of Two Elements
     // Given an array, find the maximum product of any two elements
     /**
@@ -813,12 +819,12 @@ public class array_problems {
         if (nums == null || nums.length < 2) {
             throw new IllegalArgumentException("Array must have at least 2 elements");
         }
-        
+
         int max1 = Integer.MIN_VALUE;
         int max2 = Integer.MIN_VALUE;
         int min1 = Integer.MAX_VALUE;
         int min2 = Integer.MAX_VALUE;
-        
+
         // Find two largest and two smallest elements
         for (int num : nums) {
             // Update two largest
@@ -828,7 +834,7 @@ public class array_problems {
             } else if (num > max2) {
                 max2 = num;
             }
-            
+
             // Update two smallest
             if (num < min1) {
                 min2 = min1;
@@ -837,11 +843,12 @@ public class array_problems {
                 min2 = num;
             }
         }
-        
-        // Maximum product can be either (max1 * max2) or (min1 * min2) for negative numbers
+
+        // Maximum product can be either (max1 * max2) or (min1 * min2) for negative
+        // numbers
         return Math.max(max1 * max2, min1 * min2);
     }
-    
+
     // Problem 36: Check if Array is Palindrome
     // Given an array, check if it reads the same forwards and backwards
     /**
@@ -852,10 +859,10 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return true; // Empty array is considered palindrome
         }
-        
+
         int left = 0;
         int right = nums.length - 1;
-        
+
         while (left < right) {
             if (nums[left] != nums[right]) {
                 return false;
@@ -863,10 +870,10 @@ public class array_problems {
             left++;
             right--;
         }
-        
+
         return true;
     }
-    
+
     // Problem 37: Find All Unique Elements
     // Given an array, find all elements that appear exactly once
     /**
@@ -878,24 +885,24 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return unique;
         }
-        
+
         java.util.Map<Integer, Integer> frequency = new java.util.HashMap<>();
-        
+
         // Count frequency of each element
         for (int num : nums) {
             frequency.put(num, frequency.getOrDefault(num, 0) + 1);
         }
-        
+
         // Find all elements that appear exactly once
         for (java.util.Map.Entry<Integer, Integer> entry : frequency.entrySet()) {
             if (entry.getValue() == 1) {
                 unique.add(entry.getKey());
             }
         }
-        
+
         return unique;
     }
-    
+
     // Problem 38: Find All Positive Numbers
     // Given an array, find all positive numbers (greater than 0)
     /**
@@ -907,16 +914,16 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return positive;
         }
-        
+
         for (int num : nums) {
             if (num > 0) {
                 positive.add(num);
             }
         }
-        
+
         return positive;
     }
-    
+
     // Problem 39: Find All Negative Numbers
     // Given an array, find all negative numbers (less than 0)
     /**
@@ -928,16 +935,16 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return negative;
         }
-        
+
         for (int num : nums) {
             if (num < 0) {
                 negative.add(num);
             }
         }
-        
+
         return negative;
     }
-    
+
     // Problem 40: Count Zeros in Array
     // Given an array, count how many zeros are present
     /**
@@ -953,7 +960,7 @@ public class array_problems {
         }
         return count;
     }
-    
+
     // Problem 41: Find Minimum Sum of Two Elements
     // Given an array, find the minimum sum of any two elements
     /**
@@ -964,10 +971,10 @@ public class array_problems {
         if (nums == null || nums.length < 2) {
             throw new IllegalArgumentException("Array must have at least 2 elements");
         }
-        
+
         int min1 = Integer.MAX_VALUE;
         int min2 = Integer.MAX_VALUE;
-        
+
         // Find two smallest elements
         for (int num : nums) {
             if (num < min1) {
@@ -977,10 +984,10 @@ public class array_problems {
                 min2 = num;
             }
         }
-        
+
         return min1 + min2;
     }
-    
+
     // Problem 42: Find Maximum Difference Between Two Elements
     // Given an array, find the maximum difference between two elements (max - min)
     /**
@@ -991,10 +998,10 @@ public class array_problems {
         if (nums == null || nums.length < 2) {
             throw new IllegalArgumentException("Array must have at least 2 elements");
         }
-        
+
         int min = nums[0];
         int max = nums[0];
-        
+
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] < min) {
                 min = nums[i];
@@ -1003,10 +1010,10 @@ public class array_problems {
                 max = nums[i];
             }
         }
-        
+
         return max - min;
     }
-    
+
     // Problem 43: Find Minimum Difference Between Two Elements
     // Given an array, find the minimum absolute difference between any two elements
     /**
@@ -1017,12 +1024,12 @@ public class array_problems {
         if (nums == null || nums.length < 2) {
             throw new IllegalArgumentException("Array must have at least 2 elements");
         }
-        
+
         // Sort the array to find minimum difference between adjacent elements
         java.util.Arrays.sort(nums);
-        
+
         int minDiff = Integer.MAX_VALUE;
-        
+
         // Find minimum difference between adjacent elements
         for (int i = 1; i < nums.length; i++) {
             int diff = Math.abs(nums[i] - nums[i - 1]);
@@ -1030,10 +1037,10 @@ public class array_problems {
                 minDiff = diff;
             }
         }
-        
+
         return minDiff;
     }
-    
+
     // Problem 44: Find All Elements Greater Than a Value
     // Given an array and a value, find all elements greater than that value
     /**
@@ -1045,16 +1052,16 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return result;
         }
-        
+
         for (int num : nums) {
             if (num > value) {
                 result.add(num);
             }
         }
-        
+
         return result;
     }
-    
+
     // Problem 45: Find All Elements Less Than a Value
     // Given an array and a value, find all elements less than that value
     /**
@@ -1066,16 +1073,16 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return result;
         }
-        
+
         for (int num : nums) {
             if (num < value) {
                 result.add(num);
             }
         }
-        
+
         return result;
     }
-    
+
     // Problem 46: Find All Elements Equal To a Value
     // Given an array and a value, find all elements equal to that value
     /**
@@ -1087,18 +1094,19 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return result;
         }
-        
+
         for (int num : nums) {
             if (num == value) {
                 result.add(num);
             }
         }
-        
+
         return result;
     }
-    
+
     // Problem 47: Find All Elements Between Two Values
-    // Given an array and two values (min and max), find all elements between them (inclusive)
+    // Given an array and two values (min and max), find all elements between them
+    // (inclusive)
     /**
      * Time Complexity: O(n)
      * Space Complexity: O(n)
@@ -1108,25 +1116,26 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return result;
         }
-        
+
         // Ensure min <= max
         if (min > max) {
             int temp = min;
             min = max;
             max = temp;
         }
-        
+
         for (int num : nums) {
             if (num >= min && num <= max) {
                 result.add(num);
             }
         }
-        
+
         return result;
     }
-    
+
     // Problem 48: Find Sum of All Elements Greater Than a Value
-    // Given an array and a value, find the sum of all elements greater than that value
+    // Given an array and a value, find the sum of all elements greater than that
+    // value
     /**
      * Time Complexity: O(n)
      * Space Complexity: O(1)
@@ -1136,16 +1145,16 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return sum;
         }
-        
+
         for (int num : nums) {
             if (num > value) {
                 sum += num;
             }
         }
-        
+
         return sum;
     }
-    
+
     // Problem 49: Find Sum of All Elements Less Than a Value
     // Given an array and a value, find the sum of all elements less than that value
     /**
@@ -1157,16 +1166,16 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return sum;
         }
-        
+
         for (int num : nums) {
             if (num < value) {
                 sum += num;
             }
         }
-        
+
         return sum;
     }
-    
+
     // Problem 50: Find Sum of All Elements Equal To a Value
     // Given an array and a value, find the sum of all elements equal to that value
     /**
@@ -1178,18 +1187,19 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return sum;
         }
-        
+
         for (int num : nums) {
             if (num == value) {
                 sum += num;
             }
         }
-        
+
         return sum;
     }
-    
+
     // Problem 51: Find Sum of All Elements Between Two Values
-    // Given an array and two values (min and max), find the sum of all elements between them (inclusive)
+    // Given an array and two values (min and max), find the sum of all elements
+    // between them (inclusive)
     /**
      * Time Complexity: O(n)
      * Space Complexity: O(1)
@@ -1199,23 +1209,23 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return sum;
         }
-        
+
         // Ensure min <= max
         if (min > max) {
             int temp = min;
             min = max;
             max = temp;
         }
-        
+
         for (int num : nums) {
             if (num >= min && num <= max) {
                 sum += num;
             }
         }
-        
+
         return sum;
     }
-    
+
     // Problem 52: Find Product of All Elements
     // Given an array, find the product of all elements
     /**
@@ -1226,15 +1236,15 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             throw new IllegalArgumentException("Array must not be empty");
         }
-        
+
         long product = 1;
         for (int num : nums) {
             product *= num;
         }
-        
+
         return product;
     }
-    
+
     // Problem 53: Find All Elements at Even Indices
     // Given an array, find all elements at even indices (0, 2, 4, ...)
     /**
@@ -1246,14 +1256,14 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return result;
         }
-        
+
         for (int i = 0; i < nums.length; i += 2) {
             result.add(nums[i]);
         }
-        
+
         return result;
     }
-    
+
     // Problem 54: Find All Elements at Odd Indices
     // Given an array, find all elements at odd indices (1, 3, 5, ...)
     /**
@@ -1265,14 +1275,14 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return result;
         }
-        
+
         for (int i = 1; i < nums.length; i += 2) {
             result.add(nums[i]);
         }
-        
+
         return result;
     }
-    
+
     // Problem 55: Find Sum of Elements at Even Indices
     // Given an array, find the sum of all elements at even indices (0, 2, 4, ...)
     /**
@@ -1283,15 +1293,15 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        
+
         int sum = 0;
         for (int i = 0; i < nums.length; i += 2) {
             sum += nums[i];
         }
-        
+
         return sum;
     }
-    
+
     // Problem 56: Find Sum of Elements at Odd Indices
     // Given an array, find the sum of all elements at odd indices (1, 3, 5, ...)
     /**
@@ -1302,17 +1312,18 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             return 0;
         }
-        
+
         int sum = 0;
         for (int i = 1; i < nums.length; i += 2) {
             sum += nums[i];
         }
-        
+
         return sum;
     }
-    
+
     // Problem 57: Find Index of Last Occurrence of Element
-    // Given an array and a target, return the index of the last occurrence of target, or -1 if not found
+    // Given an array and a target, return the index of the last occurrence of
+    // target, or -1 if not found
     /**
      * Time Complexity: O(n)
      * Space Complexity: O(1)
@@ -1321,16 +1332,16 @@ public class array_problems {
         if (nums == null) {
             return -1;
         }
-        
+
         for (int i = nums.length - 1; i >= 0; i--) {
             if (nums[i] == target) {
                 return i;
             }
         }
-        
+
         return -1;
     }
-    
+
     // Problem 58: Find Index of Minimum Element
     // Given an array, return the index of the smallest element
     /**
@@ -1341,7 +1352,7 @@ public class array_problems {
         if (nums == null || nums.length == 0) {
             throw new IllegalArgumentException("Array must not be empty");
         }
-        
+
         int minIdx = 0;
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] < nums[minIdx]) {
@@ -1350,7 +1361,27 @@ public class array_problems {
         }
         return minIdx;
     }
-    
+
+    // Problem 59: Find Index of Maximum Element
+    // Given an array, return the index of the largest element
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int indexOfMax(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("Array must not be empty");
+        }
+
+        int maxIdx = 0;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > nums[maxIdx]) {
+                maxIdx = i;
+            }
+        }
+        return maxIdx;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1362,252 +1393,256 @@ public class array_problems {
         }
         System.out.println("]");
     }
-    
+
     // Test cases
     public static void main(String[] args) {
         // Test Two Sum
         System.out.println("Problem 1 - Two Sum:");
-        printArray(twoSum(new int[]{2, 7, 11, 15}, 9)); // Output: [0, 1]
-        
+        printArray(twoSum(new int[] { 2, 7, 11, 15 }, 9)); // Output: [0, 1]
+
         // Test Maximum Subarray
         System.out.println("\nProblem 2 - Maximum Subarray:");
-        System.out.println(maxSubarray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4})); // Output: 6
-        
+        System.out.println(maxSubarray(new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 })); // Output: 6
+
         // Test Max Profit
         System.out.println("\nProblem 3 - Best Time to Buy and Sell Stock:");
-        System.out.println(maxProfit(new int[]{7, 1, 5, 3, 6, 4})); // Output: 5
-        
+        System.out.println(maxProfit(new int[] { 7, 1, 5, 3, 6, 4 })); // Output: 5
+
         // Test Contains Duplicate
         System.out.println("\nProblem 4 - Contains Duplicate:");
-        System.out.println(containsDuplicate(new int[]{1, 2, 3, 1})); // Output: true
-        
+        System.out.println(containsDuplicate(new int[] { 1, 2, 3, 1 })); // Output: true
+
         // Test Product Except Self
         System.out.println("\nProblem 5 - Product of Array Except Self:");
-        printArray(productExceptSelf(new int[]{1, 2, 3, 4})); // Output: [24, 12, 8, 6]
-        
+        printArray(productExceptSelf(new int[] { 1, 2, 3, 4 })); // Output: [24, 12, 8, 6]
+
         // Test Max Product Subarray
         System.out.println("\nProblem 6 - Maximum Product Subarray:");
-        System.out.println(maxProductSubarray(new int[]{2, 3, -2, 4})); // Output: 6
-        
+        System.out.println(maxProductSubarray(new int[] { 2, 3, -2, 4 })); // Output: 6
+
         // Test Find Min Rotated
         System.out.println("\nProblem 7 - Find Minimum in Rotated Sorted Array:");
-        System.out.println(findMinRotated(new int[]{3, 4, 5, 1, 2})); // Output: 1
-        
+        System.out.println(findMinRotated(new int[] { 3, 4, 5, 1, 2 })); // Output: 1
+
         // Test Search Rotated
         System.out.println("\nProblem 8 - Search in Rotated Sorted Array:");
-        System.out.println(searchRotated(new int[]{4, 5, 6, 7, 0, 1, 2}, 0)); // Output: 4
-        
+        System.out.println(searchRotated(new int[] { 4, 5, 6, 7, 0, 1, 2 }, 0)); // Output: 4
+
         // Test 3Sum
         System.out.println("\nProblem 9 - 3Sum:");
-        System.out.println(threeSum(new int[]{-1, 0, 1, 2, -1, -4})); // Output: [[-1, -1, 2], [-1, 0, 1]]
-        
+        System.out.println(threeSum(new int[] { -1, 0, 1, 2, -1, -4 })); // Output: [[-1, -1, 2], [-1, 0, 1]]
+
         // Test Max Area
         System.out.println("\nProblem 10 - Container With Most Water:");
-        System.out.println(maxArea(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7})); // Output: 49
-        
+        System.out.println(maxArea(new int[] { 1, 8, 6, 2, 5, 4, 8, 3, 7 })); // Output: 49
+
         // Test Merge Sorted Arrays
         System.out.println("\nProblem 11 - Merge Sorted Arrays:");
-        int[] nums1 = {1, 2, 3, 0, 0, 0};
-        mergeSortedArrays(nums1, 3, new int[]{2, 5, 6}, 3);
+        int[] nums1 = { 1, 2, 3, 0, 0, 0 };
+        mergeSortedArrays(nums1, 3, new int[] { 2, 5, 6 }, 3);
         printArray(nums1); // Output: [1, 2, 2, 3, 5, 6]
-        
+
         // Test Rotate Array
         System.out.println("\nProblem 12 - Rotate Array:");
-        int[] nums = {1, 2, 3, 4, 5, 6, 7};
+        int[] nums = { 1, 2, 3, 4, 5, 6, 7 };
         rotateArray(nums, 3);
         printArray(nums); // Output: [5, 6, 7, 1, 2, 3, 4]
-        
+
         // Test Find First Repeating
         System.out.println("\nProblem 13 - Find First Repeating Element:");
-        System.out.println(findFirstRepeating(new int[]{10, 5, 3, 4, 3, 5, 6})); // Output: 5
-        
+        System.out.println(findFirstRepeating(new int[] { 10, 5, 3, 4, 3, 5, 6 })); // Output: 5
+
         // Test Find Missing Number
         System.out.println("\nProblem 14 - Find Missing Number:");
-        System.out.println(findMissingNumber(new int[]{3, 0, 1})); // Output: 2
-        
+        System.out.println(findMissingNumber(new int[] { 3, 0, 1 })); // Output: 2
+
         // Test Single Number
         System.out.println("\nProblem 15 - Single Number:");
-        System.out.println(singleNumber(new int[]{4, 1, 2, 1, 2})); // Output: 4
-        
+        System.out.println(singleNumber(new int[] { 4, 1, 2, 1, 2 })); // Output: 4
+
         // Test Majority Element
         System.out.println("\nProblem 16 - Majority Element:");
-        System.out.println(majorityElement(new int[]{3, 2, 3})); // Output: 3
-        
+        System.out.println(majorityElement(new int[] { 3, 2, 3 })); // Output: 3
+
         // Test Count Occurrences
         System.out.println("\nProblem 17 - Count Occurrences of Element:");
-        System.out.println(countOccurrences(new int[]{1, 2, 2, 3, 2, 4}, 2)); // Output: 3
-        
+        System.out.println(countOccurrences(new int[] { 1, 2, 2, 3, 2, 4 }, 2)); // Output: 3
+
         // Test Linear Search
         System.out.println("\nProblem 18 - Linear Search:");
-        System.out.println(linearSearch(new int[]{4, 2, 7, 1, 9}, 7)); // Output: 2
-        
+        System.out.println(linearSearch(new int[] { 4, 2, 7, 1, 9 }, 7)); // Output: 2
+
         // Test Binary Search
         System.out.println("\nProblem 19 - Binary Search (Any Occurrence):");
-        System.out.println(binarySearch(new int[]{1, 2, 3, 4, 5, 6}, 4)); // Output: 3
-        
+        System.out.println(binarySearch(new int[] { 1, 2, 3, 4, 5, 6 }, 4)); // Output: 3
+
         // Test Find Maximum Element
         System.out.println("\nProblem 20 - Find Maximum Element:");
-        System.out.println(findMax(new int[]{3, 1, 7, 0, 5})); // Output: 7
-        
+        System.out.println(findMax(new int[] { 3, 1, 7, 0, 5 })); // Output: 7
+
         // Test Check if Array is Sorted
         System.out.println("\nProblem 21 - Check if Array is Sorted:");
-        System.out.println(isSorted(new int[]{1, 2, 2, 3, 5})); // Output: true
-        
+        System.out.println(isSorted(new int[] { 1, 2, 2, 3, 5 })); // Output: true
+
         // Test Find Minimum Element
         System.out.println("\nProblem 22 - Find Minimum Element:");
-        System.out.println(findMinElement(new int[]{3, 1, 7, 0, 5})); // Output: 0
-        
+        System.out.println(findMinElement(new int[] { 3, 1, 7, 0, 5 })); // Output: 0
+
         // Test Sum of Array Elements
         System.out.println("\nProblem 23 - Sum of Array Elements:");
-        System.out.println(sumArray(new int[]{1, 2, 3, 4, 5})); // Output: 15
-        
+        System.out.println(sumArray(new int[] { 1, 2, 3, 4, 5 })); // Output: 15
+
         // Test Reverse Array
         System.out.println("\nProblem 24 - Reverse Array:");
-        int[] nums24 = {1, 2, 3, 4, 5};
+        int[] nums24 = { 1, 2, 3, 4, 5 };
         reverseArray(nums24);
         printArray(nums24); // Output: [5, 4, 3, 2, 1]
-        
+
         // Test Count Even Numbers in Array
         System.out.println("\nProblem 25 - Count Even Numbers in Array:");
-        System.out.println(countEvens(new int[]{1, 2, 3, 4, 6})); // Output: 3
-        
+        System.out.println(countEvens(new int[] { 1, 2, 3, 4, 6 })); // Output: 3
+
         // Test Range of Array (Max - Min)
         System.out.println("\nProblem 26 - Range of Array (Max - Min):");
-        System.out.println(arrayRange(new int[]{3, 1, 7, 0, 5})); // Output: 7
-        
+        System.out.println(arrayRange(new int[] { 3, 1, 7, 0, 5 })); // Output: 7
+
         // Test Count Odd Numbers in Array
         System.out.println("\nProblem 27 - Count Odd Numbers in Array:");
-        System.out.println(countOdds(new int[]{1, 2, 3, 4, 5})); // Output: 3
-        
+        System.out.println(countOdds(new int[] { 1, 2, 3, 4, 5 })); // Output: 3
+
         // Test Find Average of Array Elements
         System.out.println("\nProblem 28 - Find Average of Array Elements:");
-        System.out.println(findAverage(new int[]{1, 2, 3, 4, 5})); // Output: 3.0
-        
+        System.out.println(findAverage(new int[] { 1, 2, 3, 4, 5 })); // Output: 3.0
+
         // Test Find Second Largest Element
         System.out.println("\nProblem 29 - Find Second Largest Element:");
-        System.out.println(findSecondLargest(new int[]{3, 1, 7, 0, 5})); // Output: 5
-        
+        System.out.println(findSecondLargest(new int[] { 3, 1, 7, 0, 5 })); // Output: 5
+
         // Test Find Second Smallest Element
         System.out.println("\nProblem 30 - Find Second Smallest Element:");
-        System.out.println(findSecondSmallest(new int[]{3, 1, 7, 0, 5})); // Output: 1
-        
+        System.out.println(findSecondSmallest(new int[] { 3, 1, 7, 0, 5 })); // Output: 1
+
         // Test Remove Duplicates from Sorted Array
         System.out.println("\nProblem 31 - Remove Duplicates from Sorted Array:");
-        int[] nums31 = {1, 1, 2, 2, 3, 4, 4, 5};
+        int[] nums31 = { 1, 1, 2, 2, 3, 4, 4, 5 };
         int newLength = removeDuplicates(nums31);
         System.out.println("New length: " + newLength); // Output: 5
         System.out.print("Array after removal: ");
         printArray(nums31); // Output: [1, 2, 3, 4, 5, ...]
-        
+
         // Test Move Zeros to End
         System.out.println("\nProblem 32 - Move Zeros to End:");
-        int[] nums32 = {0, 1, 0, 3, 12};
+        int[] nums32 = { 0, 1, 0, 3, 12 };
         moveZerosToEnd(nums32);
         printArray(nums32); // Output: [1, 3, 12, 0, 0]
-        
+
         // Test Find All Duplicates in Array
         System.out.println("\nProblem 33 - Find All Duplicates in Array:");
-        System.out.println(findAllDuplicates(new int[]{4, 3, 2, 7, 8, 2, 3, 1})); // Output: [2, 3]
-        
+        System.out.println(findAllDuplicates(new int[] { 4, 3, 2, 7, 8, 2, 3, 1 })); // Output: [2, 3]
+
         // Test Find Peak Element
         System.out.println("\nProblem 34 - Find Peak Element:");
-        System.out.println(findPeakElement(new int[]{1, 2, 3, 1})); // Output: 2
-        
+        System.out.println(findPeakElement(new int[] { 1, 2, 3, 1 })); // Output: 2
+
         // Test Find Maximum Product of Two Elements
         System.out.println("\nProblem 35 - Find Maximum Product of Two Elements:");
-        System.out.println(maxProductOfTwo(new int[]{1, 2, 3, 4, 5})); // Output: 20
-        
+        System.out.println(maxProductOfTwo(new int[] { 1, 2, 3, 4, 5 })); // Output: 20
+
         // Test Check if Array is Palindrome
         System.out.println("\nProblem 36 - Check if Array is Palindrome:");
-        System.out.println(isPalindrome(new int[]{1, 2, 3, 2, 1})); // Output: true
-        System.out.println(isPalindrome(new int[]{1, 2, 3, 4, 5})); // Output: false
-        
+        System.out.println(isPalindrome(new int[] { 1, 2, 3, 2, 1 })); // Output: true
+        System.out.println(isPalindrome(new int[] { 1, 2, 3, 4, 5 })); // Output: false
+
         // Test Find All Unique Elements
         System.out.println("\nProblem 37 - Find All Unique Elements:");
-        System.out.println(findUniqueElements(new int[]{1, 2, 2, 3, 4, 4, 5})); // Output: [1, 3, 5]
-        
+        System.out.println(findUniqueElements(new int[] { 1, 2, 2, 3, 4, 4, 5 })); // Output: [1, 3, 5]
+
         // Test Find All Positive Numbers
         System.out.println("\nProblem 38 - Find All Positive Numbers:");
-        System.out.println(findAllPositive(new int[]{-1, 2, -3, 4, 0, 5, -6})); // Output: [2, 4, 5]
-        
+        System.out.println(findAllPositive(new int[] { -1, 2, -3, 4, 0, 5, -6 })); // Output: [2, 4, 5]
+
         // Test Find All Negative Numbers
         System.out.println("\nProblem 39 - Find All Negative Numbers:");
-        System.out.println(findAllNegative(new int[]{-1, 2, -3, 4, 0, 5, -6})); // Output: [-1, -3, -6]
-        
+        System.out.println(findAllNegative(new int[] { -1, 2, -3, 4, 0, 5, -6 })); // Output: [-1, -3, -6]
+
         // Test Count Zeros in Array
         System.out.println("\nProblem 40 - Count Zeros in Array:");
-        System.out.println(countZeros(new int[]{0, 1, 0, 3, 0, 5, 0})); // Output: 4
-        
+        System.out.println(countZeros(new int[] { 0, 1, 0, 3, 0, 5, 0 })); // Output: 4
+
         // Test Find Minimum Sum of Two Elements
         System.out.println("\nProblem 41 - Find Minimum Sum of Two Elements:");
-        System.out.println(minSumOfTwo(new int[]{5, 2, 8, 1, 9})); // Output: 3
-        
+        System.out.println(minSumOfTwo(new int[] { 5, 2, 8, 1, 9 })); // Output: 3
+
         // Test Find Maximum Difference Between Two Elements
         System.out.println("\nProblem 42 - Find Maximum Difference Between Two Elements:");
-        System.out.println(maxDifference(new int[]{7, 2, 9, 5, 1})); // Output: 8
-        
+        System.out.println(maxDifference(new int[] { 7, 2, 9, 5, 1 })); // Output: 8
+
         // Test Find Minimum Difference Between Two Elements
         System.out.println("\nProblem 43 - Find Minimum Difference Between Two Elements:");
-        System.out.println(minDifference(new int[]{7, 2, 9, 5, 1})); // Output: 1
-        
+        System.out.println(minDifference(new int[] { 7, 2, 9, 5, 1 })); // Output: 1
+
         // Test Find All Elements Greater Than a Value
         System.out.println("\nProblem 44 - Find All Elements Greater Than a Value:");
-        System.out.println(findElementsGreaterThan(new int[]{1, 5, 3, 8, 2, 7}, 4)); // Output: [5, 8, 7]
-        
+        System.out.println(findElementsGreaterThan(new int[] { 1, 5, 3, 8, 2, 7 }, 4)); // Output: [5, 8, 7]
+
         // Test Find All Elements Less Than a Value
         System.out.println("\nProblem 45 - Find All Elements Less Than a Value:");
-        System.out.println(findElementsLessThan(new int[]{1, 5, 3, 8, 2, 7}, 4)); // Output: [1, 3, 2]
-        
+        System.out.println(findElementsLessThan(new int[] { 1, 5, 3, 8, 2, 7 }, 4)); // Output: [1, 3, 2]
+
         // Test Find All Elements Equal To a Value
         System.out.println("\nProblem 46 - Find All Elements Equal To a Value:");
-        System.out.println(findElementsEqualTo(new int[]{1, 5, 3, 5, 2, 5}, 5)); // Output: [5, 5, 5]
-        
+        System.out.println(findElementsEqualTo(new int[] { 1, 5, 3, 5, 2, 5 }, 5)); // Output: [5, 5, 5]
+
         // Test Find All Elements Between Two Values
         System.out.println("\nProblem 47 - Find All Elements Between Two Values:");
-        System.out.println(findElementsBetween(new int[]{1, 5, 3, 8, 2, 7, 4}, 3, 6)); // Output: [5, 3, 4]
-        
+        System.out.println(findElementsBetween(new int[] { 1, 5, 3, 8, 2, 7, 4 }, 3, 6)); // Output: [5, 3, 4]
+
         // Test Find Sum of All Elements Greater Than a Value
         System.out.println("\nProblem 48 - Find Sum of All Elements Greater Than a Value:");
-        System.out.println(sumElementsGreaterThan(new int[]{1, 5, 3, 8, 2, 7}, 4)); // Output: 20
-        
+        System.out.println(sumElementsGreaterThan(new int[] { 1, 5, 3, 8, 2, 7 }, 4)); // Output: 20
+
         // Test Find Sum of All Elements Less Than a Value
         System.out.println("\nProblem 49 - Find Sum of All Elements Less Than a Value:");
-        System.out.println(sumElementsLessThan(new int[]{1, 5, 3, 8, 2, 7}, 4)); // Output: 6
-        
+        System.out.println(sumElementsLessThan(new int[] { 1, 5, 3, 8, 2, 7 }, 4)); // Output: 6
+
         // Test Find Sum of All Elements Equal To a Value
         System.out.println("\nProblem 50 - Find Sum of All Elements Equal To a Value:");
-        System.out.println(sumElementsEqualTo(new int[]{1, 5, 3, 5, 2, 5}, 5)); // Output: 15
-        
+        System.out.println(sumElementsEqualTo(new int[] { 1, 5, 3, 5, 2, 5 }, 5)); // Output: 15
+
         // Test Find Sum of All Elements Between Two Values
         System.out.println("\nProblem 51 - Find Sum of All Elements Between Two Values:");
-        System.out.println(sumElementsBetween(new int[]{1, 5, 3, 8, 2, 7, 4}, 3, 6)); // Output: 12
-        
+        System.out.println(sumElementsBetween(new int[] { 1, 5, 3, 8, 2, 7, 4 }, 3, 6)); // Output: 12
+
         // Test Find Product of All Elements
         System.out.println("\nProblem 52 - Find Product of All Elements:");
-        System.out.println(productOfAllElements(new int[]{1, 2, 3, 4})); // Output: 24
-        
+        System.out.println(productOfAllElements(new int[] { 1, 2, 3, 4 })); // Output: 24
+
         // Test Find All Elements at Even Indices
         System.out.println("\nProblem 53 - Find All Elements at Even Indices:");
-        System.out.println(findElementsAtEvenIndices(new int[]{10, 20, 30, 40, 50, 60})); // Output: [10, 30, 50]
-        
+        System.out.println(findElementsAtEvenIndices(new int[] { 10, 20, 30, 40, 50, 60 })); // Output: [10, 30, 50]
+
         // Test Find All Elements at Odd Indices
         System.out.println("\nProblem 54 - Find All Elements at Odd Indices:");
-        System.out.println(findElementsAtOddIndices(new int[]{10, 20, 30, 40, 50, 60})); // Output: [20, 40, 60]
-        
+        System.out.println(findElementsAtOddIndices(new int[] { 10, 20, 30, 40, 50, 60 })); // Output: [20, 40, 60]
+
         // Test Find Sum of Elements at Even Indices
         System.out.println("\nProblem 55 - Find Sum of Elements at Even Indices:");
-        System.out.println(sumElementsAtEvenIndices(new int[]{10, 20, 30, 40, 50, 60})); // Output: 90
-        
+        System.out.println(sumElementsAtEvenIndices(new int[] { 10, 20, 30, 40, 50, 60 })); // Output: 90
+
         // Test Find Sum of Elements at Odd Indices
         System.out.println("\nProblem 56 - Find Sum of Elements at Odd Indices:");
-        System.out.println(sumElementsAtOddIndices(new int[]{10, 20, 30, 40, 50, 60})); // Output: 120
-        
+        System.out.println(sumElementsAtOddIndices(new int[] { 10, 20, 30, 40, 50, 60 })); // Output: 120
+
         // Test Find Index of Last Occurrence of Element
         System.out.println("\nProblem 57 - Find Index of Last Occurrence of Element:");
-        System.out.println(lastIndexOf(new int[]{2, 5, 3, 5, 7, 5, 9}, 5)); // Output: 5
-        
+        System.out.println(lastIndexOf(new int[] { 2, 5, 3, 5, 7, 5, 9 }, 5)); // Output: 5
+
         // Test Find Index of Minimum Element
         System.out.println("\nProblem 58 - Find Index of Minimum Element:");
-        System.out.println(indexOfMin(new int[]{3, 1, 7, 0, 5})); // Output: 3
+        System.out.println(indexOfMin(new int[] { 3, 1, 7, 0, 5 })); // Output: 3
+
+        // Test Find Index of Maximum Element
+        System.out.println("\nProblem 59 - Find Index of Maximum Element:");
+        System.out.println(indexOfMax(new int[] { 3, 1, 7, 0, 5 })); // Output: 2
     }
 }
