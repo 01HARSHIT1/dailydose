@@ -1437,6 +1437,24 @@ public class array_problems {
         }
     }
 
+    // Problem 63: Create Array Filled with Value
+    // Given length and value, return a new array of that length filled with the
+    // value
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(n)
+     */
+    public static int[] createFilledArray(int length, int value) {
+        if (length < 0) {
+            throw new IllegalArgumentException("Length must be non-negative");
+        }
+        int[] result = new int[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = value;
+        }
+        return result;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1714,5 +1732,9 @@ public class array_problems {
         int[] nums62 = { 1, 2, 2, 3, 2, 4 };
         replaceAll(nums62, 2, 9);
         printArray(nums62); // Output: [1, 9, 9, 3, 9, 4]
+
+        // Test Create Array Filled with Value
+        System.out.println("\nProblem 63 - Create Array Filled with Value:");
+        printArray(createFilledArray(5, 7)); // Output: [7, 7, 7, 7, 7]
     }
 }
