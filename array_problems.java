@@ -1483,6 +1483,26 @@ public class array_problems {
         nums[j] = temp;
     }
 
+    // Problem 66: Find Maximum in Range
+    // Given an array and range [start, end] (inclusive), return the maximum element
+    // in that range
+    /**
+     * Time Complexity: O(end - start + 1)
+     * Space Complexity: O(1)
+     */
+    public static int maxInRange(int[] nums, int start, int end) {
+        if (nums == null || nums.length == 0 || start < 0 || end >= nums.length || start > end) {
+            throw new IllegalArgumentException("Invalid array or range");
+        }
+        int max = nums[start];
+        for (int i = start + 1; i <= end; i++) {
+            if (nums[i] > max) {
+                max = nums[i];
+            }
+        }
+        return max;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1774,5 +1794,9 @@ public class array_problems {
         int[] nums65 = { 10, 20, 30, 40, 50 };
         swap(nums65, 0, 4);
         printArray(nums65); // Output: [50, 20, 30, 40, 10]
+
+        // Test Find Maximum in Range
+        System.out.println("\nProblem 66 - Find Maximum in Range:");
+        System.out.println(maxInRange(new int[] { 3, 1, 7, 0, 5, 9, 2 }, 1, 5)); // Output: 9
     }
 }
