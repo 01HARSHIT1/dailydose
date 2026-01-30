@@ -1686,6 +1686,25 @@ public class array_problems {
         return true;
     }
 
+    // Problem 76: Find Largest Even Element
+    // Given an array, return the largest even element, or Integer.MIN_VALUE if no even element exists
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int findLargestEven(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return Integer.MIN_VALUE;
+        }
+        int maxEven = Integer.MIN_VALUE;
+        for (int num : nums) {
+            if (num % 2 == 0 && num > maxEven) {
+                maxEven = num;
+            }
+        }
+        return maxEven;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -2021,5 +2040,9 @@ public class array_problems {
         System.out.println("\nProblem 75 - Check if Array is Sorted in Descending Order:");
         System.out.println(isSortedDescending(new int[] { 5, 4, 3, 2, 1 })); // Output: true
         System.out.println(isSortedDescending(new int[] { 5, 3, 4, 2, 1 })); // Output: false
+
+        // Test Find Largest Even Element
+        System.out.println("\nProblem 76 - Find Largest Even Element:");
+        System.out.println(findLargestEven(new int[] { 1, 3, 6, 2, 8, 5, 4 })); // Output: 8
     }
 }
