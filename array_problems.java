@@ -1610,6 +1610,35 @@ public class array_problems {
         reverse(nums, 0, n - 1);
     }
 
+    // Problem 73: Find Third Largest Element
+    // Given an array, return the third largest distinct element
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int findThirdLargest(int[] nums) {
+        if (nums == null || nums.length < 3) {
+            throw new IllegalArgumentException("Array must have at least 3 elements");
+        }
+        int first = Integer.MIN_VALUE, second = Integer.MIN_VALUE, third = Integer.MIN_VALUE;
+        for (int num : nums) {
+            if (num > first) {
+                third = second;
+                second = first;
+                first = num;
+            } else if (num > second && num != first) {
+                third = second;
+                second = num;
+            } else if (num > third && num != second && num != first) {
+                third = num;
+            }
+        }
+        if (third == Integer.MIN_VALUE) {
+            throw new IllegalArgumentException("Array does not have 3 distinct elements");
+        }
+        return third;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1932,5 +1961,9 @@ public class array_problems {
         int[] nums72 = { 1, 2, 3, 4, 5 };
         rotateLeft(nums72, 2);
         printArray(nums72); // Output: [3, 4, 5, 1, 2]
+
+        // Test Find Third Largest Element
+        System.out.println("\nProblem 73 - Find Third Largest Element:");
+        System.out.println(findThirdLargest(new int[] { 3, 2, 1, 5, 4 })); // Output: 3
     }
 }
