@@ -1522,6 +1522,41 @@ public class array_problems {
         return min;
     }
 
+    // Problem 68: Find Sum in Range
+    // Given an array and range [start, end] (inclusive), return the sum of elements in that range
+    /**
+     * Time Complexity: O(end - start + 1)
+     * Space Complexity: O(1)
+     */
+    public static int sumInRange(int[] nums, int start, int end) {
+        if (nums == null || nums.length == 0 || start < 0 || end >= nums.length || start > end) {
+            throw new IllegalArgumentException("Invalid array or range");
+        }
+        int sum = 0;
+        for (int i = start; i <= end; i++) {
+            sum += nums[i];
+        }
+        return sum;
+    }
+
+    // Problem 69: Find Average in Range
+    // Given an array and range [start, end] (inclusive), return the average of elements in that range
+    /**
+     * Time Complexity: O(end - start + 1)
+     * Space Complexity: O(1)
+     */
+    public static double averageInRange(int[] nums, int start, int end) {
+        if (nums == null || nums.length == 0 || start < 0 || end >= nums.length || start > end) {
+            throw new IllegalArgumentException("Invalid array or range");
+        }
+        int sum = 0;
+        int count = end - start + 1;
+        for (int i = start; i <= end; i++) {
+            sum += nums[i];
+        }
+        return (double) sum / count;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1821,5 +1856,13 @@ public class array_problems {
         // Test Find Minimum in Range
         System.out.println("\nProblem 67 - Find Minimum in Range:");
         System.out.println(minInRange(new int[] { 3, 1, 7, 0, 5, 9, 2 }, 1, 5)); // Output: 0
+
+        // Test Find Sum in Range
+        System.out.println("\nProblem 68 - Find Sum in Range:");
+        System.out.println(sumInRange(new int[] { 1, 2, 3, 4, 5, 6 }, 1, 4)); // Output: 14
+
+        // Test Find Average in Range
+        System.out.println("\nProblem 69 - Find Average in Range:");
+        System.out.println(averageInRange(new int[] { 1, 2, 3, 4, 5, 6 }, 1, 4)); // Output: 3.5
     }
 }
