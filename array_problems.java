@@ -1574,6 +1574,25 @@ public class array_problems {
         return set.size();
     }
 
+    // Problem 71: Check if Array Has All Unique Elements
+    // Given an array, return true if all elements are distinct, false otherwise
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(n)
+     */
+    public static boolean hasAllUnique(int[] nums) {
+        if (nums == null || nums.length <= 1) {
+            return true;
+        }
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            if (!set.add(num)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1885,5 +1904,10 @@ public class array_problems {
         // Test Count Distinct Elements
         System.out.println("\nProblem 70 - Count Distinct Elements:");
         System.out.println(countDistinct(new int[] { 1, 2, 2, 3, 4, 4, 4, 5 })); // Output: 5
+
+        // Test Check if Array Has All Unique Elements
+        System.out.println("\nProblem 71 - Check if Array Has All Unique Elements:");
+        System.out.println(hasAllUnique(new int[] { 1, 2, 3, 4, 5 })); // Output: true
+        System.out.println(hasAllUnique(new int[] { 1, 2, 2, 3, 4 })); // Output: false
     }
 }
