@@ -1557,6 +1557,23 @@ public class array_problems {
         return (double) sum / count;
     }
 
+    // Problem 70: Count Distinct Elements
+    // Given an array, return the count of unique (distinct) elements
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(n)
+     */
+    public static int countDistinct(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            set.add(num);
+        }
+        return set.size();
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1864,5 +1881,9 @@ public class array_problems {
         // Test Find Average in Range
         System.out.println("\nProblem 69 - Find Average in Range:");
         System.out.println(averageInRange(new int[] { 1, 2, 3, 4, 5, 6 }, 1, 4)); // Output: 3.5
+
+        // Test Count Distinct Elements
+        System.out.println("\nProblem 70 - Count Distinct Elements:");
+        System.out.println(countDistinct(new int[] { 1, 2, 2, 3, 4, 4, 4, 5 })); // Output: 5
     }
 }
