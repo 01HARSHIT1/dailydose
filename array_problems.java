@@ -1668,6 +1668,24 @@ public class array_problems {
         return third;
     }
 
+    // Problem 75: Check if Array is Sorted in Descending Order
+    // Given an array, return true if each element is >= the next, false otherwise
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static boolean isSortedDescending(int[] nums) {
+        if (nums == null || nums.length <= 1) {
+            return true;
+        }
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] < nums[i + 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1998,5 +2016,10 @@ public class array_problems {
         // Test Find Third Smallest Element
         System.out.println("\nProblem 74 - Find Third Smallest Element:");
         System.out.println(findThirdSmallest(new int[] { 5, 2, 8, 1, 9, 3 })); // Output: 3
+
+        // Test Check if Array is Sorted in Descending Order
+        System.out.println("\nProblem 75 - Check if Array is Sorted in Descending Order:");
+        System.out.println(isSortedDescending(new int[] { 5, 4, 3, 2, 1 })); // Output: true
+        System.out.println(isSortedDescending(new int[] { 5, 3, 4, 2, 1 })); // Output: false
     }
 }
