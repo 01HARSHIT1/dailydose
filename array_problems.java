@@ -1639,6 +1639,35 @@ public class array_problems {
         return third;
     }
 
+    // Problem 74: Find Third Smallest Element
+    // Given an array, return the third smallest distinct element
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int findThirdSmallest(int[] nums) {
+        if (nums == null || nums.length < 3) {
+            throw new IllegalArgumentException("Array must have at least 3 elements");
+        }
+        int first = Integer.MAX_VALUE, second = Integer.MAX_VALUE, third = Integer.MAX_VALUE;
+        for (int num : nums) {
+            if (num < first) {
+                third = second;
+                second = first;
+                first = num;
+            } else if (num < second && num != first) {
+                third = second;
+                second = num;
+            } else if (num < third && num != second && num != first) {
+                third = num;
+            }
+        }
+        if (third == Integer.MAX_VALUE) {
+            throw new IllegalArgumentException("Array does not have 3 distinct elements");
+        }
+        return third;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1965,5 +1994,9 @@ public class array_problems {
         // Test Find Third Largest Element
         System.out.println("\nProblem 73 - Find Third Largest Element:");
         System.out.println(findThirdLargest(new int[] { 3, 2, 1, 5, 4 })); // Output: 3
+
+        // Test Find Third Smallest Element
+        System.out.println("\nProblem 74 - Find Third Smallest Element:");
+        System.out.println(findThirdSmallest(new int[] { 5, 2, 8, 1, 9, 3 })); // Output: 3
     }
 }
