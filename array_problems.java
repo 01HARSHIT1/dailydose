@@ -1593,6 +1593,23 @@ public class array_problems {
         return true;
     }
 
+    // Problem 72: Rotate Array Left by K Positions
+    // Given an array and k, rotate the array left by k positions (elements wrap around)
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static void rotateLeft(int[] nums, int k) {
+        if (nums == null || nums.length <= 1 || k == 0) {
+            return;
+        }
+        int n = nums.length;
+        k = ((k % n) + n) % n; // handle negative k
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, n - 1);
+        reverse(nums, 0, n - 1);
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -1909,5 +1926,11 @@ public class array_problems {
         System.out.println("\nProblem 71 - Check if Array Has All Unique Elements:");
         System.out.println(hasAllUnique(new int[] { 1, 2, 3, 4, 5 })); // Output: true
         System.out.println(hasAllUnique(new int[] { 1, 2, 2, 3, 4 })); // Output: false
+
+        // Test Rotate Array Left by K Positions
+        System.out.println("\nProblem 72 - Rotate Array Left by K Positions:");
+        int[] nums72 = { 1, 2, 3, 4, 5 };
+        rotateLeft(nums72, 2);
+        printArray(nums72); // Output: [3, 4, 5, 1, 2]
     }
 }
