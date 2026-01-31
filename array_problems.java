@@ -1779,6 +1779,25 @@ public class array_problems {
         return product;
     }
 
+    // Problem 81: Find Index of Maximum in Range
+    // Given an array and range [start, end] (inclusive), return the index of the maximum element in that range
+    /**
+     * Time Complexity: O(end - start + 1)
+     * Space Complexity: O(1)
+     */
+    public static int indexOfMaxInRange(int[] nums, int start, int end) {
+        if (nums == null || nums.length == 0 || start < 0 || end >= nums.length || start > end) {
+            throw new IllegalArgumentException("Invalid array or range");
+        }
+        int maxIdx = start;
+        for (int i = start + 1; i <= end; i++) {
+            if (nums[i] > nums[maxIdx]) {
+                maxIdx = i;
+            }
+        }
+        return maxIdx;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -2134,5 +2153,9 @@ public class array_problems {
         // Test Find Product in Range
         System.out.println("\nProblem 80 - Find Product in Range:");
         System.out.println(productInRange(new int[] { 1, 2, 3, 4, 5 }, 1, 3)); // Output: 24
+
+        // Test Find Index of Maximum in Range
+        System.out.println("\nProblem 81 - Find Index of Maximum in Range:");
+        System.out.println(indexOfMaxInRange(new int[] { 3, 1, 7, 0, 5, 9, 2 }, 1, 5)); // Output: 5
     }
 }
