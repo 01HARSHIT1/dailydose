@@ -1891,6 +1891,25 @@ public class array_problems {
         return true;
     }
 
+    // Problem 87: Count Zeros in Range
+    // Given an array and range [start, end] (inclusive), return the count of zeros in that range
+    /**
+     * Time Complexity: O(end - start + 1)
+     * Space Complexity: O(1)
+     */
+    public static int countZerosInRange(int[] nums, int start, int end) {
+        if (nums == null || nums.length == 0 || start < 0 || end >= nums.length || start > end) {
+            throw new IllegalArgumentException("Invalid array or range");
+        }
+        int count = 0;
+        for (int i = start; i <= end; i++) {
+            if (nums[i] == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -2272,5 +2291,9 @@ public class array_problems {
         System.out.println("\nProblem 86 - Check if All Elements in Range are Negative:");
         System.out.println(allNegativeInRange(new int[] { -1, -2, -3 }, 0, 2)); // Output: true
         System.out.println(allNegativeInRange(new int[] { -1, 2, -3 }, 0, 2)); // Output: false
+
+        // Test Count Zeros in Range
+        System.out.println("\nProblem 87 - Count Zeros in Range:");
+        System.out.println(countZerosInRange(new int[] { 1, 0, 2, 0, 3, 0 }, 0, 5)); // Output: 3
     }
 }
