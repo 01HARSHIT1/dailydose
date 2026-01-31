@@ -1855,6 +1855,24 @@ public class array_problems {
         return count;
     }
 
+    // Problem 85: Check if All Elements in Range are Positive
+    // Given an array and range [start, end] (inclusive), return true if all elements in that range are > 0
+    /**
+     * Time Complexity: O(end - start + 1)
+     * Space Complexity: O(1)
+     */
+    public static boolean allPositiveInRange(int[] nums, int start, int end) {
+        if (nums == null || nums.length == 0 || start < 0 || end >= nums.length || start > end) {
+            throw new IllegalArgumentException("Invalid array or range");
+        }
+        for (int i = start; i <= end; i++) {
+            if (nums[i] <= 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -2226,5 +2244,10 @@ public class array_problems {
         // Test Count Odd Numbers in Range
         System.out.println("\nProblem 84 - Count Odd Numbers in Range:");
         System.out.println(countOddsInRange(new int[] { 2, 3, 4, 5, 6, 7 }, 1, 4)); // Output: 2
+
+        // Test Check if All Elements in Range are Positive
+        System.out.println("\nProblem 85 - Check if All Elements in Range are Positive:");
+        System.out.println(allPositiveInRange(new int[] { 1, 2, 3, 4, 5 }, 0, 4)); // Output: true
+        System.out.println(allPositiveInRange(new int[] { 1, -2, 3, 4 }, 0, 3)); // Output: false
     }
 }
