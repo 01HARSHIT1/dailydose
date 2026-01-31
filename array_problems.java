@@ -1724,6 +1724,25 @@ public class array_problems {
         return minOdd;
     }
 
+    // Problem 78: Find Smallest Even Element
+    // Given an array, return the smallest even element, or Integer.MAX_VALUE if no even element exists
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int findSmallestEven(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return Integer.MAX_VALUE;
+        }
+        int minEven = Integer.MAX_VALUE;
+        for (int num : nums) {
+            if (num % 2 == 0 && num < minEven) {
+                minEven = num;
+            }
+        }
+        return minEven;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -2067,5 +2086,9 @@ public class array_problems {
         // Test Find Smallest Odd Element
         System.out.println("\nProblem 77 - Find Smallest Odd Element:");
         System.out.println(findSmallestOdd(new int[] { 4, 7, 2, 9, 5, 3, 8 })); // Output: 3
+
+        // Test Find Smallest Even Element
+        System.out.println("\nProblem 78 - Find Smallest Even Element:");
+        System.out.println(findSmallestEven(new int[] { 5, 6, 8, 2, 9, 4 })); // Output: 2
     }
 }
