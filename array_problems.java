@@ -1743,6 +1743,25 @@ public class array_problems {
         return minEven;
     }
 
+    // Problem 79: Find Largest Odd Element
+    // Given an array, return the largest odd element, or Integer.MIN_VALUE if no odd element exists
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     */
+    public static int findLargestOdd(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return Integer.MIN_VALUE;
+        }
+        int maxOdd = Integer.MIN_VALUE;
+        for (int num : nums) {
+            if (num % 2 != 0 && num > maxOdd) {
+                maxOdd = num;
+            }
+        }
+        return maxOdd;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -2090,5 +2109,9 @@ public class array_problems {
         // Test Find Smallest Even Element
         System.out.println("\nProblem 78 - Find Smallest Even Element:");
         System.out.println(findSmallestEven(new int[] { 5, 6, 8, 2, 9, 4 })); // Output: 2
+
+        // Test Find Largest Odd Element
+        System.out.println("\nProblem 79 - Find Largest Odd Element:");
+        System.out.println(findLargestOdd(new int[] { 2, 5, 8, 9, 3, 7, 4 })); // Output: 9
     }
 }
