@@ -1798,6 +1798,25 @@ public class array_problems {
         return maxIdx;
     }
 
+    // Problem 82: Find Index of Minimum in Range
+    // Given an array and range [start, end] (inclusive), return the index of the minimum element in that range
+    /**
+     * Time Complexity: O(end - start + 1)
+     * Space Complexity: O(1)
+     */
+    public static int indexOfMinInRange(int[] nums, int start, int end) {
+        if (nums == null || nums.length == 0 || start < 0 || end >= nums.length || start > end) {
+            throw new IllegalArgumentException("Invalid array or range");
+        }
+        int minIdx = start;
+        for (int i = start + 1; i <= end; i++) {
+            if (nums[i] < nums[minIdx]) {
+                minIdx = i;
+            }
+        }
+        return minIdx;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -2157,5 +2176,9 @@ public class array_problems {
         // Test Find Index of Maximum in Range
         System.out.println("\nProblem 81 - Find Index of Maximum in Range:");
         System.out.println(indexOfMaxInRange(new int[] { 3, 1, 7, 0, 5, 9, 2 }, 1, 5)); // Output: 5
+
+        // Test Find Index of Minimum in Range
+        System.out.println("\nProblem 82 - Find Index of Minimum in Range:");
+        System.out.println(indexOfMinInRange(new int[] { 3, 1, 7, 0, 5, 9, 2 }, 1, 5)); // Output: 3
     }
 }
