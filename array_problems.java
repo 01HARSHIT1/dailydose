@@ -1762,6 +1762,23 @@ public class array_problems {
         return maxOdd;
     }
 
+    // Problem 80: Find Product in Range
+    // Given an array and range [start, end] (inclusive), return the product of elements in that range
+    /**
+     * Time Complexity: O(end - start + 1)
+     * Space Complexity: O(1)
+     */
+    public static long productInRange(int[] nums, int start, int end) {
+        if (nums == null || nums.length == 0 || start < 0 || end >= nums.length || start > end) {
+            throw new IllegalArgumentException("Invalid array or range");
+        }
+        long product = 1;
+        for (int i = start; i <= end; i++) {
+            product *= nums[i];
+        }
+        return product;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -2113,5 +2130,9 @@ public class array_problems {
         // Test Find Largest Odd Element
         System.out.println("\nProblem 79 - Find Largest Odd Element:");
         System.out.println(findLargestOdd(new int[] { 2, 5, 8, 9, 3, 7, 4 })); // Output: 9
+
+        // Test Find Product in Range
+        System.out.println("\nProblem 80 - Find Product in Range:");
+        System.out.println(productInRange(new int[] { 1, 2, 3, 4, 5 }, 1, 3)); // Output: 24
     }
 }
