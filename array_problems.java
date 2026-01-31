@@ -1817,6 +1817,25 @@ public class array_problems {
         return minIdx;
     }
 
+    // Problem 83: Count Even Numbers in Range
+    // Given an array and range [start, end] (inclusive), return the count of even elements in that range
+    /**
+     * Time Complexity: O(end - start + 1)
+     * Space Complexity: O(1)
+     */
+    public static int countEvensInRange(int[] nums, int start, int end) {
+        if (nums == null || nums.length == 0 || start < 0 || end >= nums.length || start > end) {
+            throw new IllegalArgumentException("Invalid array or range");
+        }
+        int count = 0;
+        for (int i = start; i <= end; i++) {
+            if (nums[i] % 2 == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     // Helper method to print array
     private static void printArray(int[] arr) {
         System.out.print("[");
@@ -2180,5 +2199,9 @@ public class array_problems {
         // Test Find Index of Minimum in Range
         System.out.println("\nProblem 82 - Find Index of Minimum in Range:");
         System.out.println(indexOfMinInRange(new int[] { 3, 1, 7, 0, 5, 9, 2 }, 1, 5)); // Output: 3
+
+        // Test Count Even Numbers in Range
+        System.out.println("\nProblem 83 - Count Even Numbers in Range:");
+        System.out.println(countEvensInRange(new int[] { 2, 3, 4, 5, 6, 7 }, 1, 4)); // Output: 2
     }
 }
