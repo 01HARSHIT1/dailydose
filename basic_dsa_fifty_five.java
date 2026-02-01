@@ -2,8 +2,6 @@
  * Basic DSA Problems - Count Set Bits (Hamming Weight)
  * Simple and essential DSA problems for beginners
  */
-import java.util.*;
-
 public class basic_dsa_fifty_five {
     
     // Problem: Count the number of set bits (1s) in binary representation
