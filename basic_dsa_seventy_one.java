@@ -1,3 +1,4 @@
+
 /**
  * Basic DSA Problems - One More Fundamental Question
  * Simple and essential DSA problems for beginners
@@ -16,10 +17,12 @@ public class basic_dsa_seventy_one {
      * Space Complexity: O(n)
      */
     public static boolean containsDuplicate(int[] nums) {
-        if (nums == null || nums.length < 2) return false;
+        if (nums == null || nums.length < 2)
+            return false;
         Set<Integer> seen = new HashSet<>();
         for (int n : nums) {
-            if (!seen.add(n)) return true;
+            if (!seen.add(n))
+                return true;
         }
         return false;
     }
