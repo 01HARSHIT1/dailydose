@@ -1,40 +1,35 @@
 /**
- * Basic DSA Problems - Remove Duplicates from Sorted Array
- * Remove duplicates in-place, return new length
+ * Basic DSA Problems - Valid Anagram
+ * Check if two strings are anagrams of each other
  */
-import java.util.Arrays;
-
 public class basic_dsa_one_hundred_twelve {
 
-    // Problem: Given sorted integer array nums, remove duplicates in-place so each element
-    // appears once. Return the number of unique elements (first k elements are the result).
+    // Problem: Given two strings s and t, return true if t is an anagram of s.
+    // Anagram = same characters, same frequency, different order.
 
     /**
-     * Two pointers: write index for next unique; scan and copy when different from previous.
-     * Time O(n), Space O(1)
+     * Count character frequencies; strings must have same length and same counts.
+     * Time O(n), Space O(1) - fixed 26-letter alphabet
      */
-    public static int removeDuplicates(int[] nums) {
-        if (nums == null || nums.length == 0) return 0;
-        int write = 1;
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] != nums[i - 1]) {
-                nums[write++] = nums[i];
-            }
+    public static boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) return false;
+        int[] count = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            count[s.charAt(i) - 'a']++;
+            count[t.charAt(i) - 'a']--;
         }
-        return write;
+        for (int c : count)
+            if (c != 0) return false;
+        return true;
     }
 
     public static void main(String[] args) {
         System.out.println("=".repeat(60));
-        System.out.println("Problem: Remove Duplicates from Sorted Array");
+        System.out.println("Problem: Valid Anagram");
         System.out.println("=".repeat(60));
 
-        int[] a = { 1, 1, 2 };
-        int k1 = removeDuplicates(a);
-        System.out.println("[1,1,2] -> k=" + k1 + ", nums=" + Arrays.toString(Arrays.copyOf(a, k1)));
-
-        int[] b = { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
-        int k2 = removeDuplicates(b);
-        System.out.println("[0,0,1,1,1,2,2,3,3,4] -> k=" + k2 + ", nums=" + Arrays.toString(Arrays.copyOf(b, k2)));
+        System.out.println("anagram, nagaram -> " + isAnagram("anagram", "nagaram"));
+        System.out.println("rat, car -> " + isAnagram("rat", "car"));
+        System.out.println("a, ab -> " + isAnagram("a", "ab"));
     }
 }
