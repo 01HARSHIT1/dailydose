@@ -3,7 +3,6 @@
  * Increment a non-negative integer given as most-significant-first digits by one.
  */
 #include <iostream>
-#include <string>
 #include <vector>
 
 std::vector<int> plusOne(std::vector<int>& digits) {
