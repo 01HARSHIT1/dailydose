@@ -1,0 +1,13 @@
+*.exe
+*.dll
+*.pdb
+*.ilk
+*.obj
+*.o
+*.out
+*.class
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+
