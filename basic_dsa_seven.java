@@ -1,6 +1,6 @@
 /**
- * Basic DSA Problems - One Fundamental Array/DP Question
- * Simple and essential DSA problem for beginners
+ * Basic DSA Problems - Two Fundamental Array Questions
+ * Simple and essential DSA problems for beginners
  */
 public class basic_dsa_seven {
     
@@ -30,6 +30,40 @@ public class basic_dsa_seven {
         }
         
         return best;
+    }
+    
+    // Problem 2: Binary Search (Iterative)
+    // Given a sorted integer array and a target value, return the index if found, else -1.
+    //
+    // Example:
+    // Array: [1, 3, 5, 7, 9], target = 7 -> 3
+    
+    /**
+     * Binary search on a sorted array (ascending)
+     * Time Complexity: O(log n)
+     * Space Complexity: O(1)
+     */
+    public static int binarySearch(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+        
+        int left = 0;
+        int right = nums.length - 1;
+        
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        
+        return -1;
     }
     
     private static String arrayToString(int[] arr) {
@@ -89,5 +123,44 @@ public class basic_dsa_seven {
         int[] a7 = null;
         System.out.println("\nArray: " + arrayToString(a7));
         System.out.println("Max Subarray Sum: " + maxSubarraySum(a7));
+        
+        System.out.println("\n" + "=".repeat(60));
+        System.out.println("Problem 2: Binary Search (Iterative)");
+        System.out.println("=".repeat(60));
+        
+        // Test Case 1 - Found
+        int[] b1 = {1, 3, 5, 7, 9, 11};
+        int t1 = 7;
+        System.out.println("Array: " + arrayToString(b1));
+        System.out.println("Target: " + t1);
+        System.out.println("Index: " + binarySearch(b1, t1));
+        
+        // Test Case 2 - Not found
+        int t2 = 8;
+        System.out.println("\nArray: " + arrayToString(b1));
+        System.out.println("Target: " + t2);
+        System.out.println("Index: " + binarySearch(b1, t2));
+        
+        // Test Case 3 - First element
+        int t3 = 1;
+        System.out.println("\nTarget: " + t3);
+        System.out.println("Index: " + binarySearch(b1, t3));
+        
+        // Test Case 4 - Last element
+        int t4 = 11;
+        System.out.println("\nTarget: " + t4);
+        System.out.println("Index: " + binarySearch(b1, t4));
+        
+        // Test Case 5 - Empty array
+        int[] b2 = {};
+        System.out.println("\nArray: " + arrayToString(b2));
+        System.out.println("Target: 1");
+        System.out.println("Index: " + binarySearch(b2, 1));
+        
+        // Test Case 6 - Null array
+        int[] b3 = null;
+        System.out.println("\nArray: " + arrayToString(b3));
+        System.out.println("Target: 1");
+        System.out.println("Index: " + binarySearch(b3, 1));
     }
 }
