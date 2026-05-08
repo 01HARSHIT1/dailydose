@@ -16,6 +16,9 @@ public class basic_dsa_six_hundred_twenty_seven {
         if (x < 0) {
             return false;
         }
+        if (x % 10 == 0 && x != 0) {
+            return false;
+        }
         if (x < 10) {
             return true;
         }
@@ -39,6 +42,8 @@ public class basic_dsa_six_hundred_twenty_seven {
         System.out.println("121 -> " + isPalindrome(121));
         System.out.println("-121 -> " + isPalindrome(-121));
         System.out.println("10 -> " + isPalindrome(10));
+        System.out.println("1001 -> " + isPalindrome(1001));
+        System.out.println("0 -> " + isPalindrome(0));
         System.out.println("1221 -> " + isPalindrome(1221));
         System.out.println("7 -> " + isPalindrome(7));
     }
