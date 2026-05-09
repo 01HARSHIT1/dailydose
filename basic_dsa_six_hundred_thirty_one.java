@@ -45,7 +45,7 @@ public class basic_dsa_six_hundred_thirty_one {
         System.out.println("hello, ll -> " + strStr("hello", "ll"));
         System.out.println("aaaa, bba -> " + strStr("aaaa", "bba"));
         System.out.println("abc, \" -> " + strStr("abc", ""));
-        System.out.println("sad, sadb -> " + strStr("sadbutsad", "sad"));
+        System.out.println("sadbutsad, sad -> " + strStr("sadbutsad", "sad"));
         System.out.println("null -> " + strStr(null, "a"));
     }
 }
