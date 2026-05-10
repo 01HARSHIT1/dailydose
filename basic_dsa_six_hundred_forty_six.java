@@ -57,7 +57,8 @@ public class basic_dsa_six_hundred_forty_six {
         System.out.println("n=2 -> " + generateParenthesis(2));
         System.out.println("n=3 size -> " + generateParenthesis(3).size());
         System.out.println("n=3 -> " + generateParenthesis(3));
-        System.out.println("n=0 -> " + generateParenthesis(0));
+        List<String> z = generateParenthesis(0);
+        System.out.println("n=0 size -> " + z.size() + " first -> \"" + z.get(0) + "\"");
         System.out.println("n=-1 -> " + generateParenthesis(-1));
     }
 }
